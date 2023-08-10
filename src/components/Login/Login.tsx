@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import './Login.css';
 import iconLogo from './icons/logo.svg';
 import iconLogo2 from './icons/logo-white.svg';
+import iconFb from './icons/facebook.svg';
+import iconIg from './icons/instagram.svg';
+import iconTt from './icons/twitter.svg';
 
 interface LoginProps {
   onLogin: (username: string, fullName: string, password: string) => void;
@@ -61,20 +64,43 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
       </div>
 
       <div className="footer-login">
-        <div className="footer-logo">
-          <img src={iconLogo2} className="logo-white" /> 
-          <h2>FitMe</h2>
-        </div>
-        <div className="menu-footer">
-          <a href="#">About us</a>
-          <a href="#">Delivery</a>
-          <a href="#">Help & Support</a>
-          <a href="#">About us</a>
-          <a href="#">T&C</a>
-        </div>
-        <div className="contact-footer">
-          <p>Contact: +1 (213) 776 24 10</p>
-        </div>
+        <nav className="nav-footer">
+          <div className="footer-logo">
+            <img src={iconLogo2} className="logo-white" /> 
+            <h2>FitMe</h2>
+          </div>
+          <div className="container-social">
+            <ul className="lista-footer">
+              <li>
+                <a href="#">About us</a>
+              </li>
+              <li>
+                <a href="#">Delivery</a>
+              </li>
+              <li>
+                <a href="#">Help & Support</a>
+              </li>
+              <li>
+                <a href="#">T&C</a>
+              </li>
+            </ul>
+            <div className="social">
+              <a href="http://www.facebook.com">
+                <img src={iconFb} className="facebook" />
+              </a>
+               <a href="http://www.instagram.com">
+                <img src={iconIg} className="instagram" />
+              </a>
+              <a href="http://www.twitter.com">
+                <img src={iconTt} className="twitter" />
+              </a>
+            </div>
+          </div>       
+          
+          <div className="contact-footer">
+            <p>Contact: +1 (213) 776 24 10</p>
+          </div>
+        </nav>
       </div>
     </div>
   );
