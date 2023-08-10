@@ -6,6 +6,7 @@ import Login from './components/Login/Login';
 
 function App() {
   const handleLogin = (username: string, fullName: string, password: string) => {
+    // Lógica autenticação/manipulação dos dados do login
     console.log('Username:', username);
     console.log('Full name:', fullName); 
     console.log('Password:', password);
