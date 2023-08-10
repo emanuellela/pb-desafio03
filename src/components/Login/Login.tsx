@@ -98,8 +98,14 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
           </div>       
           
           <div className="contact-footer">
-            <p>Contact: +1 (213) 776 24 10</p>
+            <div className="contact-text">
+              <p>Contact:</p>
+            </div>
+            <div className="contact-number">
+               <p>+91-123456789</p>
+            </div>
           </div>
+
         </nav>
       </div>
     </div>
