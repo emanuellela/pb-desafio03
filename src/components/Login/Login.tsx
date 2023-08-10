@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import iconLogo from './icons/logo.svg';
+import iconLogo2 from './icons/logo-white.svg';
 
 interface LoginProps {
   onLogin: (username: string, fullName: string, password: string) => void;
@@ -26,6 +27,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
           <p>Login</p>
         </div>
       </div>
+
       <div className="login-container">
         <div className="form-group">
           <label>Username</label>
@@ -55,6 +57,23 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
         <div className="register-link">
           <p>Don't have an account?</p>
           <a href="#">Register</a>
+        </div>
+      </div>
+
+      <div className="footer-login">
+        <div className="footer-logo">
+          <img src={iconLogo2} className="logo-white" /> 
+          <h2>FitMe</h2>
+        </div>
+        <div className="menu-footer">
+          <a href="#">About us</a>
+          <a href="#">Delivery</a>
+          <a href="#">Help & Support</a>
+          <a href="#">About us</a>
+          <a href="#">T&C</a>
+        </div>
+        <div className="contact-footer">
+          <p>Contact: +1 (213) 776 24 10</p>
         </div>
       </div>
     </div>

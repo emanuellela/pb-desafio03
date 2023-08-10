@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 .logo {
-    margin-right: 10px;
+    margin-right: 8px;
 }
 
 .login-header {
@@ -97,4 +97,34 @@
     color: #000000; 
     font-weight: bold;
     text-decoration: none; 
+}
+
+.footer-login {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 20px;
+    padding: 10px 0;
+    background-color: #FC8019;
+    color: #FFFFFF;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-white {
+    margin-right: 8px;
+}
+
+.footer-logo img {
+    width: 18px;
+    height: 18px;
+}
+  
+.footer-logo h2 {
+    font-size: 18px;
+    margin: 0;
 }
