@@ -14,7 +14,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [fullName, setFullName] = useState('');
   const [password, setPassword] = useState('');
-
   const handleLogin = () => { // Quando for clicado o botão de login
     onLogin(username, fullName, password); // Chamar função `onLogin` passando os dados do formulário
   };
@@ -38,14 +37,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
             type="text"
             value={username}
             onChange={e => setUsername(e.target.value)}
-          />
-        </div>
-        <div className="form-group">
-          <label>Full name</label>
-          <input
-            type="text"
-            value={fullName}
-            onChange={e => setFullName(e.target.value)}
           />
         </div>
         <div className="form-group">
@@ -96,7 +87,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               </a>
             </div>
           </div>       
-          
           <div className="contact-footer">
             <div className="contact-text">
               <p>Contact:</p>
@@ -105,7 +95,6 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
                <p>+91 123456789</p>
             </div>
           </div>
-
         </nav>
       </div>
     </div>

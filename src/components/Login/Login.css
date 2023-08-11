@@ -34,6 +34,7 @@ html, body {
 }
   
 .login-text {
+    font-weight: 500;
     width: 100%;
     display: flex;
     color: #000000;
