@@ -10,7 +10,7 @@
     display: flex; 
     flex-direction: column;
     align-items: flex-start;
-    margin: 20px 70px; /* Margem de cima e de ambos os lados */
+    margin: 20px 70px;
     padding: 0 70px; /* Preenchimento de ambos os lados */
 }
 
@@ -33,12 +33,21 @@
     color: #202020;
 }
 
+/* Define um tamanho mínimo para a altura da tela inteira */
+html, body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+ 
 .login-container {
     font-family: 'Poppins', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: #202020;
+    min-height: 70vh; /* Tamanho do onteúdo tela  */
+    justify-content: center;
 }
 
 .form-group {
@@ -131,7 +140,6 @@
 }
 
 .nav-footer {
-    align-items: center;
     display: flex;
     padding: 80px;
     flex-direction: row;
@@ -163,8 +171,9 @@
 .container-social {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    justify-content: space-between;
+    width: 50%;
+    margin: 0 auto; /* Centraliza na tela */
+    padding-inline-start: inherit; /* Direção texto */
 }
 
 .lista-footer li a {
@@ -190,6 +199,8 @@
     align-items: center;
     padding-left: 8px;
     font-size: 14px;
+    text-align: right;
+    min-width: fit-content;
 }
 
 .social {
@@ -220,12 +231,6 @@
         line-height: 15px;
     }
 
-    .contact-number {
-        display: flex;
-        text-align: right;
-        font-size: 10px;
-    }
-
     .contact-footer {
         display: flex;
         justify-content: space-between;
@@ -236,5 +241,15 @@
     .contact-text {
         display: flex; 
         font-size: 10px;
+    }
+
+    .contact-number {
+        font-weight: bold; 
+        display: flex; 
+        align-items: center;
+        padding-left: 8px;
+        font-size: 10px;
+        text-align: right;
+        min-width: fit-content;
     }
 }

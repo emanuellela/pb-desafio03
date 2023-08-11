@@ -102,7 +102,7 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
               <p>Contact:</p>
             </div>
             <div className="contact-number">
-               <p>+91-123456789</p>
+               <p>+91 123456789</p>
             </div>
           </div>
 
