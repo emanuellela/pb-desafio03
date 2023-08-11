@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+html, body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+ 
 .logo {
     margin-right: 8px;
 }
@@ -10,19 +16,39 @@
     display: flex; 
     flex-direction: column;
     align-items: flex-start;
-    margin: 20px 70px;
     padding: 0 70px; /* Preenchimento de ambos os lados */
+    margin: 20px 0; /* Espaçamento superior e inferior */
 }
 
 .login-logo {
     display: flex;
 }
+
+.align-bottom {
+    align-items: flex-end;
+}
+  
+.space-vertical { /* Classe reutilizável para espaçamento vertical */
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
   
 .login-text {
-    border-bottom: 1px solid #808080;
     width: 100%;
     display: flex;
-    margin-bottom: 40px;
+    color: #000000;
+    border-bottom: 1px solid #808080; /* Linha abaixo do texto */
+}
+
+.login-container {
+    font-family: 'Poppins', sans-serif;
+    color: #202020;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 40px;
+    align-items: center;
+    min-height: 70vh;
 }
 
 .login-container p {
@@ -31,23 +57,6 @@
     flex-direction: row;
     align-items: flex-start;
     color: #202020;
-}
-
-/* Define um tamanho mínimo para a altura da tela inteira */
-html, body {
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-}
- 
-.login-container {
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #202020;
-    min-height: 70vh; /* Tamanho do onteúdo tela  */
-    justify-content: center;
 }
 
 .form-group {
@@ -63,21 +72,20 @@ html, body {
 }
 
 .login-container input,
-.login-button {
-    margin-bottom: 10px;
+.login-button { /* Elementos combinados para margem */
+    margin-bottom: 10px; 
 }
 
 .login-container input {
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    padding: 8px;
     border: 1px dashed #FC8019; /* Borda tracejada */
-    line-height: 1.5;
-    border-radius: 4px;
-    margin-top: 5px; 
-    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
+    font-size: 16px;
+    padding: 8px;
+    line-height: 1.5;
+    border-radius: 4px;
+    margin: 5px 0; /* Top e bottom */
 }
 
 .login-button {
@@ -93,9 +101,9 @@ html, body {
 .register-link {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
-    align-items: center;
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 .register-link p {
@@ -110,14 +118,14 @@ html, body {
 
 .footer-login {
     font-family: 'Poppins', sans-serif;
-    margin-top: 20px;
-    padding: 10px 0;
     background-color: #FC8019;
     color: #FFFFFF;
-    align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px 0;
 }
 
 .footer-logo {
@@ -140,31 +148,29 @@ html, body {
 }
 
 .nav-footer {
+    width: 100%;
     display: flex;
-    padding: 80px;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    padding: 80px;
 }
 
 .lista-footer {
-    display: flex; /* Itens mais dispostos */
+    display: flex; 
     list-style: none;
     margin-top: 20px;
     justify-content: center;
 }
 
 .lista-footer li {
-    margin-right: 35px; /* Espaçamento da lista */
+    margin-right: 35px;
 }
 
 .lista-footer li a {
     font-family: 'Poppins', sans-serif;
+    color: #FFFFFF;
     text-decoration: none;
     font-weight: 300;
-    font-size: 18px;
-    line-height: 32px;
-    color: #FFFFFF;
     margin-top: 10px;
 }
 
@@ -183,14 +189,14 @@ html, body {
 
 .contact-footer {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
 }
 
 .contact-text {
+    font-size: 14px;
     display: flex; 
     align-items: center;
-    font-size: 14px;
 }
 
 .contact-number {
@@ -200,14 +206,14 @@ html, body {
     padding-left: 8px;
     font-size: 14px;
     text-align: right;
-    min-width: fit-content;
+    min-width: fit-content; /* Largura min */
 }
 
 .social {
+    width: 100%; 
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%; 
 }
 
 .social img {
@@ -227,29 +233,37 @@ html, body {
     }
 
     .lista-footer li a {
+        display: inline-grid;
         font-size: 10px;
-        line-height: 15px;
     }
 
     .contact-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         flex-direction: column;
+        padding-top: initial;
     }
 
     .contact-text {
-        display: flex; 
         font-size: 10px;
+        margin-top: 20px;
     }
 
     .contact-number {
-        font-weight: bold; 
-        display: flex; 
-        align-items: center;
-        padding-left: 8px;
         font-size: 10px;
-        text-align: right;
-        min-width: fit-content;
+        margin: 0 5px;
+    }
+
+    .footer-logo {
+        padding-inline-start: 5px;
+        margin-right: 8px;
+    }
+    
+    .login-header {
+        justify-content: center; /* Horizontal */
+        align-items: center; /* Vertical */
+        margin-bottom: 20px; 
+    }
+    
+    .login-logo {
+        margin-bottom: 10px;
     }
 }

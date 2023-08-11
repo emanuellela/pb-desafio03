@@ -21,15 +21,15 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
 
   return (
     <div>
-      <div className="login-header">
+      <header className="login-header">
         <div className="login-logo">
           <img src={iconLogo} className="logo" /> 
           <h2>FitMe</h2>
         </div>
-        <div className="login-text"> 
+        <div className={`login-text align-bottom space-vertical`}> 
           <p>Login</p>
         </div>
-      </div>
+      </header>
 
       <div className="login-container">
         <div className="form-group">
