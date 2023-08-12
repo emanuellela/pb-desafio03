@@ -31,8 +31,11 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
         <div className={`register-text align-bottom space-vertical`}> 
           <p>Register</p>
         </div>
-        <p>Please Fill out form to Register!</p>
       </header>
+
+      <div className='header-text'> 
+          <p><b>Please Fill out form to Register!</b></p>
+      </div>
 
       <div className="register-container">
         <div className="form-group-register">
@@ -77,7 +80,7 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
         </div>
         <button className="register-button" onClick={handleRegister}>Register</button>
         <div className="register-link">
-          <p>Already have an account?</p>
+          <p>Yes i have an account? Login</p>
           <a href="#">Login</a>
         </div>
       </div>

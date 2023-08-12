@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+html, body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.register-header {
+    font-family: 'Poppins', sans-serif;
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 70px; /* Preenchimento de ambos os lados */
+    margin: 20px 0; /* Espaçamento superior e inferior */
+}
+
+.header-text {
+    font-family: 'Inter', sans-serif;
+    color: #1A1A1A;
+    font-size: 12px;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    margin-top: -30px;
+    margin-bottom: 30px;
+}
+
+.align-bottom {
+    align-items: flex-end;
+}
+  
+.space-vertical { /* Classe reutilizável para espaçamento vertical */
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+  
+.register-text {
+    font-weight: 500;
+    width: 100%;
+    display: flex;
+    color: #000000;
+    border-bottom: 1px solid #808080;
+}
+
+.register-container {
+    font-family: 'Poppins', sans-serif;
+    color: #202020;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 40px;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.register-container p {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    color: #202020;
+}
+
+.form-group-register {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+  
+.form-group-register label {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.register-container input,
+.register-button { /* Elementos combinados para margem */
+    margin-bottom: 10px; 
+}
+
+.register-container input {
+    font-family: 'Poppins', sans-serif;
+    border: 1px dashed #FC8019; /* Borda tracejada */
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    padding: 8px;
+    line-height: 1.5;
+    border-radius: 4px;
+    margin: 5px 0; /* Top e bottom */
+}
+
+.register-button {
+    font-family: 'Poppins', sans-serif;
+    background-color: #FC8019;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    padding: 6px;
+    width: 150px; 
+}
+
+.register-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.register-link p {
+    margin-right: 4px;
+}
+
+.register-link a {
+    color: #000000; 
+    font-weight: bold;
+    text-decoration: none; 
+}
+
+/* Media query para largura de até 600px */
+@media (max-width: 600px) {
+    .login-header {
+        justify-content: center; /* Horizontal */
+        align-items: center; /* Vertical */
+        margin-bottom: 20px; 
+    }
+}
