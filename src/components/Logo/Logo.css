@@ -1,0 +1,15 @@
+.logo {
+    margin-right: 8px;
+}
+
+.logo-logo {
+    display: flex;
+
+}
+
+/* Media query para largura de até 600px */
+@media (max-width: 600px) {    
+    .logo-logo {
+        margin-bottom: 10px;
+    }
+}
