@@ -1,11 +1,11 @@
-import Login from './components/Login/Login';
+import Login from './components/Login/LoginForm';
+import LoginForm from './components/Login/LoginForm';
 import Register from './components/Register/Register';
 
 function App() {
-  const handleLogin = (username: string, fullName: string, password: string) => {
+  const handleLogin = (username: string, password: string) => {
     // Lógica autenticação/manipulação dos dados do login
     console.log('Username:', username);
-    console.log('Full name:', fullName); 
     console.log('Password:', password);
   };
 
@@ -16,8 +16,8 @@ function App() {
   return (
     <div className="App">
       {/* <Posts></Posts> */}
-      {/* <Login onLogin={handleLogin} /> */}
-      <Register onRegister={handleRegister} />{/* Renderizando register*/}
+      <LoginForm onLogin={handleLogin} /> 
+      {/* <Register onRegister={handleRegister} */}
     </div>
   );
 }

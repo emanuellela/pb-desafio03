@@ -1,18 +1,33 @@
 import React, { useState } from 'react';
-import './Login.css';
+import axios from 'axios';
+import './LoginForm.css';
 import Logo from '../Logo/Logo';
 import Footer from '../Footer/Footer';
 
-interface LoginProps {
-  onLogin: (username: string, fullName: string, password: string) => void;
+interface LoginFormProps {
+  onLogin: (username: string, password: string) => void;
 }
 
-const Login: React.FC<LoginProps> = ({ onLogin }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
   const [username, setUsername] = useState('');
-  const [fullName, setFullName] = useState('');
   const [password, setPassword] = useState('');
-  const handleLogin = () => { // Click login
-    onLogin(username, fullName, password); // Chama a função com os dados do form
+  const [error, setError] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.get(
+        `https://parseapi.back4app.com/login?username=${username}&password=${password}`,
+        {
+          headers: {
+            'X-Parse-Application-Id': 'lrAPveloMl57TTby5U0S4rFPBrANkAhLUll8jFOh',
+            'X-Parse-REST-API-Key': '8aqUBWOjOplfA6lstntyYsYVkt3RzpVtb8qU5x08',
+          },
+        }
+      );
+      onLogin(username, password); 
+    } catch (error) {
+      setError('Invalid credentials. Please try again.');
+    }
   };
 
   return (
@@ -42,14 +57,16 @@ const Login: React.FC<LoginProps> = ({ onLogin }) => {
           />
         </div>
         <button className="login-button" onClick={handleLogin}>Login</button>
+        {error && <p>{error}</p>}
         <div className="register-link">
           <p>Don't have an account?</p>
           <a href="#">Register</a>
         </div>
       </div>
       <Footer></Footer>
+      {error && <div className="error">{error}</div>}
     </div>
   );
 };
 
-export default Login;
+export default LoginForm;
