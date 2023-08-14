@@ -1,40 +1,57 @@
 import React, { useState } from 'react';
-import './Register.css';
+import './RegisterForm.css';
 import Logo from '../Logo/Logo';
 import Footer from '../Footer/Footer';
+import axios from 'axios';
 
-interface RegisterProps {
-  onRegister: (fullName: string, username: string, email: string, password: string) => void;
+interface RegisterFormProps {
+  onRegister: (fullName: string, username: string, email: string, password: string, confirmPassword: string) => void;
 }
 
-const Register: React.FC<RegisterProps> = ({ onRegister }) => {
+const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
   const [fullName, setFullName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const handleRegister = () => {
-    // Valida a senha e confirma
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
+  const handleRegister = async () => {
+    try {
+      const response = await axios.post(
+        'https://parseapi.back4app.com/users',
+        {
+          username,
+          password,
+          email,
+          fullName,
+        },
+        {
+          headers: {
+            'X-Parse-Application-Id': 'lrAPveloMl57TTby5U0S4rFPBrANkAhLUll8jFOh',
+            'X-Parse-REST-API-Key': '8aqUBWOjOplfA6lstntyYsYVkt3RzpVtb8qU5x08',
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      console.log('User created:', response.data);
+      onRegister(fullName, username, email, password, confirmPassword);
+    } catch (error) {
+      setError('Registration failed. Please try again.');
     }
-    // Chama a função com os dados do form
-    onRegister(fullName, username, email, password);
   };
 
   return (
     <div>
       <header className="register-header">
         <Logo></Logo>
-        <div className={`register-text align-bottom space-vertical`}> 
+        <div className={`register-text align-bottom space-vertical`}>
           <p>Register</p>
         </div>
       </header>
 
-      <div className='header-text'> 
-          <p><b>Please Fill out form to Register!</b></p>
+      <div className='header-text'>
+        <p><b>Please Fill out form to Register!</b></p>
       </div>
 
       <div className="register-container">
@@ -78,9 +95,10 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
             onChange={e => setConfirmPassword(e.target.value)}
           />
         </div>
-        <button className="register-button" onClick={handleRegister}>Register</button>
+        <button className="register-button" onClick={handleRegister}>Register</button>´
+        {error && <div className="error">{error}</div>}
         <div className="register-link">
-          <p>Yes i have an account? Login</p>
+          <p>Yes, I have an account?</p>
           <a href="#">Login</a>
         </div>
       </div>
@@ -89,4 +107,4 @@ const Register: React.FC<RegisterProps> = ({ onRegister }) => {
   );
 };
 
-export default Register;
+export default RegisterForm;

@@ -15,18 +15,27 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.get(
-        `https://parseapi.back4app.com/login?username=${username}&password=${password}`,
+      const response = await axios.post(
+        'https://parseapi.back4app.com/login', // Endpoint de login REST
+        {
+          username,
+          password,
+        },
         {
           headers: {
-            'X-Parse-Application-Id': 'lrAPveloMl57TTby5U0S4rFPBrANkAhLUll8jFOh',
-            'X-Parse-REST-API-Key': '8aqUBWOjOplfA6lstntyYsYVkt3RzpVtb8qU5x08',
+            'X-Parse-Application-Id': 'lrAPveloMl57TTby5U0S4rFPBrANkAhLUll8jFOh', // Parse App ID
+            'X-Parse-REST-API-Key': '8aqUBWOjOplfA6lstntyYsYVkt3RzpVtb8qU5x08', // Parse REST API Key
+            'Content-Type': 'application/json',
           },
         }
       );
-      onLogin(username, password); 
+  
+      const sessionToken = response.data.sessionToken;
+      console.log('Logged in successfully');
+      // Redirecionar para a página inicial ou fazer qualquer outra ação necessária
     } catch (error) {
-      setError('Invalid credentials. Please try again.');
+      console.error('Login failed', error);
+      setError('Login failed. Please try again.');
     }
   };
 
@@ -57,14 +66,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           />
         </div>
         <button className="login-button" onClick={handleLogin}>Login</button>
-        {error && <p>{error}</p>}
+        {error && <div className="error">{error}</div>}
         <div className="register-link">
           <p>Don't have an account?</p>
           <a href="#">Register</a>
         </div>
       </div>
       <Footer></Footer>
-      {error && <div className="error">{error}</div>}
     </div>
   );
 };
