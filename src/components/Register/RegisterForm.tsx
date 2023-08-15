@@ -15,34 +15,35 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
   const [error, setError] = useState('');
 
   const handleRegister = async () => {
-    if (!username || !email || !password || password !== confirmPassword) {
+    if (!fullName || !username || !email || !password || password !== confirmPassword) {
       setError('Please fill out all fields and ensure passwords match.');
       return;
     }
 
     const createUserMutation = `
-      mutation CreateUser($fullName:String!, $username: String!, $email: String!, $password: String!) {
-        createUser(fullName:$fullName, username: $username, email: $email, password: $password) {
+      mutation CreateUser($fullName: String!, $username: String!, $email: String!, $password: String!) {
+        createUser(fullName: $fullName, username: $username, email: $email, password: $password) {
           objectId
+          createdAt
           sessionToken
         }
       }
     `;
 
-    const variables = {
-      fullName:fullName,
+    const userData = {
       username: username,
-      email: email,
       password: password,
     };
 
-try {
+   /* const query = {
+      query: createUserMutation,
+      variables: userData,
+    };*/
+
+    try {
       const response = await axios.post(
-        'https://yourapp.back4app.io/parse/users', // Use o endpoint GraphQL correto
-        {
-          query: createUserMutation,
-          variables: variables,
-        },
+        'https://parseapi.back4app.com/users',
+        JSON.stringify(userData),
         {
           headers: {
             'X-Parse-Application-Id': 'lrAPveloMl57TTby5U0S4rFPBrANkAhLUll8jFOh',
