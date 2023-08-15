@@ -5,18 +5,24 @@
     margin-top: 22px;
 }
 
-.form-group-text h1{
+.form-group-text h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.form-group-text {
+    display: flex;
+    flex-direction: column;
+    margin-inline-start: 20px;
+    transform: scale(0.8);
+    margin-bottom: -70px;
+}
+
+.phrase {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 84px;
-    line-height: 100px;
-    letter-spacing: -1px;
-    margin-inline-start: 160px;
-}
-
-form-group-text {
-    display: flex;
-    flex-direction: row;
+    text-align: left; /* Centralizar o texto horizontalmente */
 }
 
 .tx1{
@@ -25,12 +31,14 @@ form-group-text {
 
 .tx2 {
     color: #FC8019;
+    white-space: pre-line;
 }
 .tx3 {
     color: #202020;
 }
 .tx4 {
     color: #FC8019;
+    white-space: pre-line;
 }
 .tx5 {
     color: #FC8019;
@@ -42,9 +50,9 @@ form-group-text {
     font-size: 18px;
     line-height: 32px;
     color: #404040;
-    margin-bottom: 30px;
-    margin-top: 130px;
-    margin-inline-start: 160px;
+    margin-inline-start: 20px;
+    transform: scale(0.8);
+    padding-bottom: 30px;
 }
 
 .homep-header {
@@ -53,6 +61,7 @@ form-group-text {
     align-items: center;
     padding: 10px 20px;
     background-color: #ffffff;
+    margin-right: 100px;
 }
   
 /* Media query para largura de até 600px */
@@ -61,13 +70,14 @@ form-group-text {
         font-weight: 200;
         font-size: 13px;
         line-height: 14px; /* Reduzindo ainda mais o espaço vertical entre as linhas */
-        padding-inline-start: 10px;
+        margin-inline-start: 20px;
     }
 
     .form-group-text {
-        flex-direction: column; /* Empilhar os elementos verticalmente */
+        flex-direction: column; 
         align-items: center; /* Centralizar verticalmente */
         text-align: center; /* Centralizar o texto horizontalmente */
+        margin-bottom: 0%;
     }
 
     .form-group-text h1 {
@@ -80,9 +90,14 @@ form-group-text {
 
     .homep-header {
         gap: 100px;
+        margin-right: 0%;
     }
 
     .barra-pesquisa {
         margin-bottom: 22px;
+    }
+    
+    .phrase {
+        text-align: center; /* Centralizar o texto horizontalmente */
     }
 }

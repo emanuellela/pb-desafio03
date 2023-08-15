@@ -8,11 +8,13 @@
     font-family: 'Poppins', sans-serif;
     display: flex;
     margin-top: 3px;
+    margin-inline-start: 130px;
 }
 
 /* Media query para largura de até 600px */
 @media (max-width: 600px) {    
     .logo-logo {
         margin-bottom: 10px;
+        margin-inline-start: 0%;
     }
 }
