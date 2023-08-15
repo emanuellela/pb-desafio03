@@ -1,21 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-.form-group-text {
+.barra-pesquisa {
+    margin-top: 22px;
+}
+
+.form-group-text h1{
     font-family: 'Poppins', sans-serif;
-    font-size: 35px;
-    line-height: 40px;
-    font-weight: 700;
+    font-weight: 500;
+    font-size: 84px;
+    line-height: 100px;
+    letter-spacing: -1px;
+    margin-inline-start: 160px;
+}
+
+form-group-text {
+    display: flex;
+    flex-direction: row;
 }
 
 .tx1{
     color: #202020;
 }
-.tx3 {
-    color: #202020;
-}
+
 .tx2 {
     color: #FC8019;
+}
+.tx3 {
+    color: #202020;
 }
 .tx4 {
     color: #FC8019;
@@ -32,6 +44,7 @@
     color: #404040;
     margin-bottom: 30px;
     margin-top: 130px;
+    margin-inline-start: 160px;
 }
 
 .homep-header {
@@ -40,5 +53,36 @@
     align-items: center;
     padding: 10px 20px;
     background-color: #ffffff;
-  }
+}
   
+/* Media query para largura de até 600px */
+@media (max-width: 600px) {
+    .ptext {
+        font-weight: 200;
+        font-size: 13px;
+        line-height: 14px; /* Reduzindo ainda mais o espaço vertical entre as linhas */
+        padding-inline-start: 10px;
+    }
+
+    .form-group-text {
+        flex-direction: column; /* Empilhar os elementos verticalmente */
+        align-items: center; /* Centralizar verticalmente */
+        text-align: center; /* Centralizar o texto horizontalmente */
+    }
+
+    .form-group-text h1 {
+        font-weight: 200;
+        font-size: 54px;
+        line-height: 60px; /* Reduzindo o espaço vertical entre as linhas */
+        margin: 0; /* Removendo margem padrão dos h1 */
+        padding-inline-start: 10px;
+    }
+
+    .homep-header {
+        gap: 100px;
+    }
+
+    .barra-pesquisa {
+        margin-bottom: 22px;
+    }
+}
