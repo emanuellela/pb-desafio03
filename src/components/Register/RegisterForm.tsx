@@ -4,11 +4,9 @@ import Logo from '../Logo/Logo';
 import Footer from '../Footer/Footer';
 import axios from 'axios';
 
-interface RegisterFormProps {
-  onRegister: (fullName: string, username: string, email: string, password: string, confirmPassword: string) => void;
-}
+interface RegisterFormProps {}
 
-const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
+const RegisterForm: React.FC<RegisterFormProps> = () => {
   const [fullName, setFullName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -17,26 +15,46 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
   const [error, setError] = useState('');
 
   const handleRegister = async () => {
-    try {
+    if (!username || !email || !password || password !== confirmPassword) {
+      setError('Please fill out all fields and ensure passwords match.');
+      return;
+    }
+
+    const createUserMutation = `
+      mutation CreateUser($fullName:String!, $username: String!, $email: String!, $password: String!) {
+        createUser(fullName:$fullName, username: $username, email: $email, password: $password) {
+          objectId
+          sessionToken
+        }
+      }
+    `;
+
+    const variables = {
+      fullName:fullName,
+      username: username,
+      email: email,
+      password: password,
+    };
+
+try {
       const response = await axios.post(
-        'https://parseapi.back4app.com/users',
+        'https://yourapp.back4app.io/parse/users', // Use o endpoint GraphQL correto
         {
-          username,
-          password,
-          email,
-          fullName,
+          query: createUserMutation,
+          variables: variables,
         },
         {
           headers: {
             'X-Parse-Application-Id': 'lrAPveloMl57TTby5U0S4rFPBrANkAhLUll8jFOh',
             'X-Parse-REST-API-Key': '8aqUBWOjOplfA6lstntyYsYVkt3RzpVtb8qU5x08',
+            'X-Parse-Revocable-Session': '1',
             'Content-Type': 'application/json',
           },
         }
       );
-      console.log('User created:', response.data);
-      onRegister(fullName, username, email, password, confirmPassword);
+      console.log('User registered successfully:', response.data);
     } catch (error) {
+      console.error('Registration failed', error);
       setError('Registration failed. Please try again.');
     }
   };
@@ -50,7 +68,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
         </div>
       </header>
 
-      <div className='header-text'>
+      <div className='alert-text'>
         <p><b>Please Fill out form to Register!</b></p>
       </div>
 
@@ -95,7 +113,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onRegister }) => {
             onChange={e => setConfirmPassword(e.target.value)}
           />
         </div>
-        <button className="register-button" onClick={handleRegister}>Register</button>´
+        <button className="register-button" onClick={handleRegister}>Register</button>
         {error && <div className="error">{error}</div>}
         <div className="register-link">
           <p>Yes, I have an account?</p>

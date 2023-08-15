@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.form-group-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px;
+    line-height: 40px;
+    font-weight: 700;
+}
+
+.tx1{
+    color: #202020;
+}
+.tx3 {
+    color: #202020;
+}
+.tx2 {
+    color: #FC8019;
+}
+.tx4 {
+    color: #FC8019;
+}
+.tx5 {
+    color: #FC8019;
+}

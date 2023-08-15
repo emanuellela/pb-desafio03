@@ -16,7 +16,7 @@ html, body {
     margin: 20px 0; /* Espaçamento superior e inferior */
 }
 
-.header-text {
+.alert-text {
     font-family: 'Inter', sans-serif;
     color: #1A1A1A;
     font-size: 12px;

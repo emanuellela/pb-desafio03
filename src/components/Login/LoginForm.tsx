@@ -5,22 +5,37 @@ import Logo from '../Logo/Logo';
 import Footer from '../Footer/Footer';
 
 interface LoginFormProps {
-  onLogin: (username: string, password: string) => void;
+
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
+const LoginForm: React.FC<LoginFormProps> = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const handleLogin = async () => {
+    const loginMutation = 
+    `mutation Login($username: String!, $password: String!) {
+      login(username: $username, password: $password) {
+        token
+        user {
+          id
+          username
+        }
+      }
+    }`;
+    const username = "teste@test.com"
+    const password = "teste123"
+    const configurationRequest = {
+      query: loginMutation,
+      variables: {
+        username,
+        password }
+    }
     try {
       const response = await axios.post(
-        'https://parseapi.back4app.com/login', // Endpoint de login REST
-        {
-          username,
-          password,
-        },
+        'https://parseapi.back4app.com/login',
+        configurationRequest,
         {
           headers: {
             'X-Parse-Application-Id': 'lrAPveloMl57TTby5U0S4rFPBrANkAhLUll8jFOh', // Parse App ID
@@ -29,16 +44,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           },
         }
       );
-  
-      const sessionToken = response.data.sessionToken;
       console.log('Logged in successfully');
-      // Redirecionar para a página inicial ou fazer qualquer outra ação necessária
+      // Redirecionar para a página inicial
     } catch (error) {
       console.error('Login failed', error);
       setError('Login failed. Please try again.');
     }
   };
-
   return (
     <div>
       <header className="login-header">
@@ -47,7 +59,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin }) => {
           <p>Login</p>
         </div>
       </header>
-
       <div className="login-container">
         <div className="form-group">
           <label>Username</label>
