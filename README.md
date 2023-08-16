@@ -7,7 +7,7 @@
 - With Node.js installed, open the terminal in the desired directory and run the following command to clone the repository:
 
 ```
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/your-user/pb-desafio03.git
 ```
 
 - Now, you can run the command to install dependencies:
