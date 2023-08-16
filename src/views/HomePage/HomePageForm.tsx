@@ -6,9 +6,24 @@ import BarraPesquisa from '../../components/BarraPesquisa/BarraPesquisa';
 import appleIcon from './icons/apple.svg'
 import bananaIcon from './icons/banana.svg'
 
+import Card from '../../components/Card/CardHomePage'; // Importe o componente Card
+import card1Image from '../../components/Card/images/RamachandraParlour.png'; // Importe as imagens dos cards
+
 interface HomePageFormProps {}
 
 const HomePageForm: React.FC<HomePageFormProps> = () => {
+
+// Array de objetos representando os cards
+const cards = [
+  {
+    title: 'Card 1',
+    description: 'Description for Card 1',
+    imageSrc: card1Image,
+  },
+
+  // Adicionar mais objetos para os outros cards 
+  ];
+
   return (
     <div>
       <header className="homep-header">
@@ -34,9 +49,24 @@ const HomePageForm: React.FC<HomePageFormProps> = () => {
           laboris nisi ut aliquip ex ea commodo consequat.
         </p>
       </div>
+
+      <div className="homep-cards-container">
+        {cards.map((card, index) => (
+          <Card
+            key={index}
+            title={card.title}
+            description={card.description}
+            imageSrc={card.imageSrc}
+          />
+        ))}
+      </div>
+
       <Footer />
     </div>
   );
 };
+
+  
+
 
 export default HomePageForm;
