@@ -21,8 +21,8 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
     }
 
     const createUserMutation = `
-      mutation CreateUser($fullName: String!, $username: String!, $email: String!, $password: String!) {
-        createUser(fullName: $fullName, username: $username, email: $email, password: $password) {
+      mutation CreateUser($input: CreateUserInput!) {
+        createUser(input: $input) {
           objectId
           createdAt
           sessionToken
@@ -30,20 +30,23 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
       }
     `;
 
-    const userData = {
-      username: username,
-      password: password,
-    };
-
-   /* const query = {
+    const requestBody = {
       query: createUserMutation,
-      variables: userData,
-    };*/
+      variables: {
+        input: {
+          fullName: fullName,
+          username: username,
+          email: email,
+          password: password,
+        },
+      },
+    };
 
     try {
       const response = await axios.post(
-        'https://parseapi.back4app.com/users',
-        JSON.stringify(userData),
+        'https://parseapi.back4app.com/graphql',
+      
+        JSON.stringify(requestBody),
         {
           headers: {
             'X-Parse-Application-Id': 'lrAPveloMl57TTby5U0S4rFPBrANkAhLUll8jFOh',
@@ -55,7 +58,7 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
       );
       console.log('User registered successfully:', response.data);
     } catch (error) {
-      console.error('Registration failed', error);
+      console.error('Registration failed:', error);
       setError('Registration failed. Please try again.');
     }
   };
