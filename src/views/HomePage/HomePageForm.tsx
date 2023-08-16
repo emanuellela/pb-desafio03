@@ -1,8 +1,8 @@
 import React from 'react';
 import './HomePageForm.css';
-import Logo from '../Logo/Logo';
-import Footer from '../Footer/Footer';
-import BarraPesquisa from '../BarraPesquisa/BarraPesquisa';
+import Logo from '../../components/Logo/Logo';
+import Footer from '../../components/Footer/Footer';
+import BarraPesquisa from '../../components/BarraPesquisa/BarraPesquisa';
 import appleIcon from './icons/apple.svg'
 import bananaIcon from './icons/banana.svg'
 

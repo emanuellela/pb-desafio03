@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './RegisterForm.css';
-import Logo from '../Logo/Logo';
-import Footer from '../Footer/Footer';
+import Logo from '../../components/Logo/Logo';
+import Footer from '../../components/Footer/Footer';
 import axios from 'axios';
+
 interface RegisterFormProps {}
+
 const RegisterForm: React.FC<RegisterFormProps> = () => {
   const [fullName, setFullName] = useState('');
   const [username, setUsername] = useState('');

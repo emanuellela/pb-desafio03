@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
-import LoginForm from './components/Login/LoginForm';
-import RegisterForm from './components/Register/RegisterForm';
-import HomePageForm from './components/HomePage/HomePageForm';
+import LoginForm from './views/Login/LoginForm';
+import RegisterForm from './views/Register/RegisterForm';
+import HomePageForm from './views/HomePage/HomePageForm';
 import Logo from './components/Logo/Logo';
 
 function App() {

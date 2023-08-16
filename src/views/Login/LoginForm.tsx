@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './LoginForm.css';
-import Logo from '../Logo/Logo';
-import Footer from '../Footer/Footer';
+import Logo from '../../components/Logo/Logo';
+import Footer from '../../components/Footer/Footer';
 
 interface LoginFormProps {
 
