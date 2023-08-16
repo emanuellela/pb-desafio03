@@ -3,9 +3,7 @@ import './RegisterForm.css';
 import Logo from '../Logo/Logo';
 import Footer from '../Footer/Footer';
 import axios from 'axios';
-
 interface RegisterFormProps {}
-
 const RegisterForm: React.FC<RegisterFormProps> = () => {
   const [fullName, setFullName] = useState('');
   const [username, setUsername] = useState('');
@@ -21,11 +19,20 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
     }
 
     const createUserMutation = `
-      mutation CreateUser($input: CreateUserInput!) {
-        createUser(input: $input) {
-          objectId
-          createdAt
-          sessionToken
+      mutation SignUp($username: String!, $password: String!) {
+        signUp(input: {
+          fields: {
+            username: $username
+            password: $password
+          }
+        }) {
+          viewer {
+            user {
+              id
+              createdAt
+            }
+            sessionToken
+          }
         }
       }
     `;
@@ -33,33 +40,27 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
     const requestBody = {
       query: createUserMutation,
       variables: {
-        input: {
-          fullName: fullName,
-          username: username,
-          email: email,
-          password: password,
-        },
+        username: username,
+        password: password,
       },
     };
 
+    const headers = {
+      'X-Parse-Application-Id': 'DSiIkHz2MVbCZutKS7abtgrRVsiLNNGcs0L7VsNL',
+      'X-Parse-Master-Key': '0cpnqkSUKVkIDlQrNxameA6OmjxmrA72tsUMqVG9',
+      'X-Parse-Client-Key': 'zXOqJ2k44R6xQqqlpPuizAr3rs58RhHXfU7Aj20V',
+      'X-Parse-Revocable-Session': '1',
+      'Content-Type': 'application/json',
+    };
+
     try {
-      const response = await axios.post(
-        'https://parseapi.back4app.com/graphql',
-      
-        JSON.stringify(requestBody),
-        {
-          headers: {
-            'X-Parse-Application-Id': 'lrAPveloMl57TTby5U0S4rFPBrANkAhLUll8jFOh',
-            'X-Parse-REST-API-Key': '8aqUBWOjOplfA6lstntyYsYVkt3RzpVtb8qU5x08',
-            'X-Parse-Revocable-Session': '1',
-            'Content-Type': 'application/json',
-          },
-        }
-      );
-      console.log('User registered successfully:', response.data);
+      const response = await axios.post('https://parseapi.back4app.com/graphql', JSON.stringify(requestBody), { headers });
+      const userData = response.data.data.signUp.viewer.user;
+      const sessionToken = response.data.data.signUp.viewer.sessionToken;
+      console.log('User data:', userData);
+      console.log('Session token:', sessionToken);
     } catch (error) {
-      console.error('Registration failed:', error);
-      setError('Registration failed. Please try again.');
+      console.error('Error creating user:', error);
     }
   };
 
