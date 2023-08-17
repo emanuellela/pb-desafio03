@@ -1,21 +1,22 @@
+import React from 'react';
 import ReactDOM from 'react-dom';
-import LoginForm from './views/Login/LoginForm';
-import RegisterForm from './views/Register/RegisterForm';
+import { BrowserRouter as Router } from 'react-router-dom';
+import AppRoutes from './services/navigation/AppRoutes';
 import HomePageForm from './views/HomePage/HomePageForm';
-import Logo from './components/Logo/Logo';
-import Card from './components/Card/CardHomePage';
 
 function App() {
   return (
     <div className="App">
-      {/* <Logo /> */}
-      {/*<LoginForm />*/}
-      <RegisterForm />
-      {/* <HomePageForm /> */}
-      {/*<Card title={''} description={''} hpageImages={[]} />*/}
+      <Router>
+        <AppRoutes />
+      </Router>
+      <HomePageForm/>
     </div>
   );
 }
+
 ReactDOM.render(<App />, document.getElementById('root'));
+// Fora do componente App, renderize a HomePage diretamente
+ReactDOM.render(<HomePageForm />, document.getElementById('home-root'))
 
 export default App;

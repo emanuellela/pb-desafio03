@@ -3,22 +3,28 @@ import './RegisterForm.css';
 import Logo from '../../components/Logo/Logo';
 import Footer from '../../components/Footer/Footer';
 import axios from 'axios';
-
 import bcrypt from 'bcryptjs';
+import { Link, useNavigate } from 'react-router-dom';
 
-interface RegisterFormProps {}
+interface RegisterFormProps {
+  backUrl?: string;
+}
 
-const RegisterForm: React.FC<RegisterFormProps> = () => {
+const RegisterForm: React.FC<RegisterFormProps> = ({ backUrl }) => { // Destructure the prop here
+  const navigate = useNavigate();
   const [fullName, setFullName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  // Novo estado para rastrear campos vazios
-  const [isEmptyFields, setIsEmptyFields] = useState(false); 
+  const [isEmptyFields, setIsEmptyFields] = useState(false);
 
-  
+  const routeChange = () => {
+    // ... your route changing logic ...
+    navigate('/login'); // Use router to navigate
+  };
+
   const handleRegister = async () => {
     if (!fullName || !username || !email || !password || password !== confirmPassword) {
       setIsEmptyFields(true);
@@ -27,9 +33,8 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
     }
 
     try {
-      // Criptografe a senha antes de enviar
-      const hashedPassword = await bcrypt.hash(password, 10); // O segundo argumento é o número de saltos (rounds)
-    
+      const hashedPassword = await bcrypt.hash(password, 12);
+
       const createUserMutation = `
         mutation SignUp($username: String!, $password: String!) {
           signUp(input: {
@@ -53,7 +58,7 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
         query: createUserMutation,
         variables: {
           username: username,
-          password: hashedPassword, // Use a senha criptografada
+          password: hashedPassword,
         },
       };
 
@@ -66,14 +71,18 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
       };
 
       const response = await axios.post('https://parseapi.back4app.com/graphql', JSON.stringify(requestBody), { headers });
+
       const userData = response.data.data.signUp.viewer.user;
       const sessionToken = response.data.data.signUp.viewer.sessionToken;
       console.log('User data:', userData);
       console.log('Session token:', sessionToken);
+      // Navegar para a página de login após o registro bem-sucedido
+      navigate('/login');
     } catch (error) {
       console.error('Error creating user:', error);
       setError('Registration failed. Please try again.');
     }
+
   };
 
   return (
@@ -130,11 +139,12 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
             onChange={e => setConfirmPassword(e.target.value)}
           />
         </div>
-        <button className="register-button" onClick={handleRegister}>Register</button>
+        <button className="register-button" onClick={routeChange}>Register</button>
         {error && <div className="error">{error}</div>}
         <div className="register-link">
           <p>Yes, I have an account?</p>
-          <a href="#">Login</a>
+          {/*<Link to={backUrl ? backUrl : '/login'}>Login</Link>*/}
+          <Link to="/login">Login</Link>
         </div>
       </div>
       <Footer></Footer>

@@ -10,6 +10,7 @@ import './HomePageForm.css';
 
 import { cardImages } from '../../UI/imagesPath';
 
+
 interface CardData {
   title: string;
   description: string;
@@ -17,10 +18,10 @@ interface CardData {
 }
 
 interface HomePageFormProps {
-
+    backUrl?: string;
 }
 
-const HomePageForm: React.FC<HomePageFormProps> = () => {
+const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => { // Destructure the prop here
   const [numColumns, setNumColumns] = useState(4);
   const [cards, setCards] = useState<CardData[]>([]);
   const [loading, setLoading] = useState(true);
