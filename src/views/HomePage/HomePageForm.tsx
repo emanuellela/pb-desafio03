@@ -12,6 +12,8 @@ import { cardImages } from '../../UI/imagesPath';
 
 import { ReactComponent as BagIcon } from './icons/bag.svg';
 
+import { IoLogIn } from 'react-icons/io5';
+
 interface CardData {
   title: string;
   description: string;
@@ -97,9 +99,14 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
     <div>
       <header className="homep-header">
         <Logo />
-        <BarraPesquisa />
-        <div className="bag-button" onClick={handleBagClick}>
-          <BagIcon /> {/* Render the bag SVG */}
+        <div className='barra-icon'>
+          <BarraPesquisa />
+          <div className="bag-button" onClick={handleBagClick}>
+            <BagIcon /> {/* Render the bag SVG */}
+          </div>
+          <button className="signin-button">
+            Sign In
+          </button>
         </div>
       </header>
 

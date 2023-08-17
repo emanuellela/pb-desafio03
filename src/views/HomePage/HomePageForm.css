@@ -61,6 +61,47 @@
     background-color: #ffffff;
     margin-right: 100px;
 }
+
+.barra-icon {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.barra-icon {
+    display: flex;
+    align-items: center;
+  }
+  
+.signin-button {
+    font-family: 'Inter', sans-serif;
+    background-color: #202020;
+    color: #FDFBFA;
+    border: none;
+    padding: 7px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: revert;
+    border-radius: 5px;
+    white-space: nowrap;
+    margin-inline-start: -12px;
+}
+  
+.signin-button:hover {
+    background-color: #333; /* Cor de fundo ao passar o mouse */
+}
+
+.bag-button {
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transição suave */
+    margin-right: 10px;
+}
+  
+.bag-button.open {
+    background-color: #f0f0f0; /* Cor de fundo quando a sacola está aberta */
+}
+
+
   
 /* Media query para largura de até 600px */
 @media (max-width: 600px) {
@@ -99,7 +140,17 @@
         margin-left: 0px; 
     }
 
-    .barra-pesquisa {
-        margin-top: 1px;
+    .barra-icon {
+        margin-inline-start: -20px;
+    }
+
+    .bag-button {
+        cursor: pointer;
+        margin-top: inherit;
+        transition: background-color 0.3s ease; /* Transição suave */
+    }
+
+    .signin-button {
+        margin-bottom: 5px;
     }
 }

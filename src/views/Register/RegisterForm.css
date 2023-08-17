@@ -120,15 +120,6 @@ html, body {
     text-decoration: none; 
 }
 
-.bag-button {
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Adicione uma transição suave */
-  }
-  
-.bag-button.open {
-    background-color: #f0f0f0; /* Cor de fundo quando a sacola está aberta */
-}
-
 /* Media query para largura de até 600px */
 @media (max-width: 600px) {
     .login-header {
