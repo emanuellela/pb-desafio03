@@ -1,28 +1,90 @@
-import React from 'react';
-import './HomePageForm.css';
-import Logo from '../../components/Logo/Logo';
-import Footer from '../../components/Footer/Footer';
+import React, { useState, useEffect } from 'react';
 import BarraPesquisa from '../../components/BarraPesquisa/BarraPesquisa';
-import appleIcon from './icons/apple.svg'
-import bananaIcon from './icons/banana.svg'
+import appleIcon from './icons/apple.svg';
+import bananaIcon from './icons/banana.svg';
+import Card from '../../components/Card/CardHomePage';
+import axios from 'axios';
+import Footer from '../../components/Footer/Footer';
+import Logo from '../../components/Logo/Logo';
+import './HomePageForm.css';
 
-import Card from '../../components/Card/CardHomePage'; // Importe o componente Card
-import card1Image from '../../components/Card/images/RamachandraParlour.png'; // Importe as imagens dos cards
+import { cardImages } from '../../UI/imagesPath';
 
-interface HomePageFormProps {}
+interface CardData {
+  title: string;
+  description: string;
+  imageSrc: string;
+}
+
+interface HomePageFormProps {
+
+}
 
 const HomePageForm: React.FC<HomePageFormProps> = () => {
+  const [numColumns, setNumColumns] = useState(4);
+  const [cards, setCards] = useState<CardData[]>([]);
+  const [loading, setLoading] = useState(true);
 
-// Array de objetos representando os cards
-const cards = [
-  {
-    title: 'Card 1',
-    description: 'Description for Card 1',
-    imageSrc: card1Image,
-  },
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 600) {
+        setNumColumns(2);
+      } else {
+        setNumColumns(4);
+      }
+    };
 
-  // Adicionar mais objetos para os outros cards 
-  ];
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const headers = {
+          'X-Parse-Application-Id': 'DSiIkHz2MVbCZutKS7abtgrRVsiLNNGcs0L7VsNL',
+          'X-Parse-Master-Key': '0cpnqkSUKVkIDlQrNxameA6OmjxmrA72tsUMqVG9',
+          'X-Parse-Client-Key': 'zXOqJ2k44R6xQqqlpPuizAr3rs58RhHXfU7Aj20V',
+          'X-Parse-Revocable-Session': '1',
+          'Content-Type': 'application/json',
+        };
+
+        const graphQLQuery = `
+          query {
+            cards {
+              title
+              description
+              imageSrc
+            }
+          }
+        `;
+
+        const response = await axios.post(
+          'https://parseapi.back4app.com/graphql',
+          {
+            query: graphQLQuery,
+          },
+          {
+            headers: headers,
+          }
+        );
+
+        const cardData = response.data.data.cards;
+
+        console.log('Card data:', cardData);
+        setCards(cardData);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching card data:', error);
+      }
+    };
+
+    fetchCards();
+  }, []);
 
   return (
     <div>
@@ -51,22 +113,36 @@ const cards = [
       </div>
 
       <div className="homep-cards-container">
-        {cards.map((card, index) => (
-          <Card
-            key={index}
-            title={card.title}
-            description={card.description}
-            imageSrc={card.imageSrc}
-          />
-        ))}
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+  
+        <div className="homep-cards-columns">
+          {Array.from({ length: numColumns }).map((_, colIndex) => (
+            <div key={colIndex} className="homep-cards-column">
+              {cards
+                .slice(
+                  colIndex * Math.ceil(cards.length / numColumns),
+                  (colIndex + 1) * Math.ceil(cards.length / numColumns)
+                )
+                .map((card, cardIndex) => (
+                  <Card
+                    key={cardIndex}
+                    title={card.title}
+                    description={card.description}
+                    hpageImages={cardImages}
+                  />
+                ))}
+            </div>
+          ))}
+        </div>
+
+        )}
       </div>
 
       <Footer />
     </div>
   );
 };
-
-  
-
 
 export default HomePageForm;

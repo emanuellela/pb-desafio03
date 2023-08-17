@@ -13,10 +13,14 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
+  // Novo estado para rastrear campos vazios
+  const [isEmptyFields, setIsEmptyFields] = useState(false); 
 
   const handleRegister = async () => {
     if (!fullName || !username || !email || !password || password !== confirmPassword) {
-      setError('Please fill out all fields and ensure passwords match.');
+      setIsEmptyFields(true); // Renderiza alerta se isEmptyFields for verdadeiro
+      // Se o usuário não preencher todos os campos obrigatórios ou se as senhas não corresponder
+      setError('Please fill out all fields and ensure passwords match.'); 
       return;
     }
 

@@ -1,61 +1,77 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './LoginForm.css';
 import Logo from '../../components/Logo/Logo';
 import Footer from '../../components/Footer/Footer';
+import './LoginForm.css';
 
-interface LoginFormProps {
-
-}
+interface LoginFormProps {}
 
 const LoginForm: React.FC<LoginFormProps> = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  // Novo estado para rastrear campos vazios
+  const [isEmptyFields, setIsEmptyFields] = useState(false); 
 
   const handleLogin = async () => {
-    const loginMutation = 
-    `mutation Login($username: String!, $password: String!) {
-      login(username: $username, password: $password) {
-        token
-        user {
-          id
-          username
+    if (!username || !password) {
+      setIsEmptyFields(true); // Renderiza alerta se isEmptyFields for verdadeiro
+      // Se o usuário não preencher todos os campos obrigatórios ou se as senhas não corresponder
+      setError('Please fill out all fields and ensure passwords match.');  
+      return;
+    }
+
+    const loginMutation = `
+      mutation LogIn($username: String!, $password: String!) {
+        logIn(input: {
+          username: $username
+          password: $password
+        }) {
+          viewer {
+            user {
+              id
+              username
+            }
+            sessionToken
+          }
         }
       }
-    }`;
-    const username = "teste@test.com"
-    const password = "teste123"
-    const configurationRequest = {
-      query: loginMutation,
-      variables: {
-        username,
-        password }
-    }
+    `;
+
     try {
       const response = await axios.post(
-        'https://parseapi.back4app.com/login',
-        configurationRequest,
+        'https://parseapi.back4app.com/graphql',
+        JSON.stringify({
+          query: loginMutation,
+          variables: {
+            username,
+            password,
+          },
+        }),
         {
           headers: {
-            'X-Parse-Application-Id': 'lrAPveloMl57TTby5U0S4rFPBrANkAhLUll8jFOh', // Parse App ID
-            'X-Parse-REST-API-Key': '8aqUBWOjOplfA6lstntyYsYVkt3RzpVtb8qU5x08', // Parse REST API Key
+            'X-Parse-Application-Id': 'DSiIkHz2MVbCZutKS7abtgrRVsiLNNGcs0L7VsNL',
+            'X-Parse-Master-Key': '0cpnqkSUKVkIDlQrNxameA6OmjxmrA72tsUMqVG9',
+            'X-Parse-Client-Key': 'zXOqJ2k44R6xQqqlpPuizAr3rs58RhHXfU7Aj20V',
+            'X-Parse-Revocable-Session': '1',
             'Content-Type': 'application/json',
           },
         }
       );
+
       console.log('Logged in successfully');
-      // Redirecionar para a página inicial
+      // Redirect to the home page or perform other actions
     } catch (error) {
       console.error('Login failed', error);
       setError('Login failed. Please try again.');
     }
   };
+
   return (
     <div>
       <header className="login-header">
-        <Logo></Logo>
-        <div className={`login-text align-bottom space-vertical`}> 
+        <Logo />
+        <div className={`login-text align-bottom space-vertical`}>
           <p>Login</p>
         </div>
       </header>
@@ -76,14 +92,17 @@ const LoginForm: React.FC<LoginFormProps> = () => {
             onChange={e => setPassword(e.target.value)}
           />
         </div>
-        <button className="login-button" onClick={handleLogin}>Login</button>
+        <button className="login-button" onClick={handleLogin}>
+          Login
+        </button>
+        {isEmptyFields && <div className="error">Please fill out all fields.</div>}
         {error && <div className="error">{error}</div>}
         <div className="register-link">
           <p>Don't have an account?</p>
           <a href="#">Register</a>
         </div>
       </div>
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 };
