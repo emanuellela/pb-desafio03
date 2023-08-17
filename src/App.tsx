@@ -17,6 +17,6 @@ function App() {
 
 ReactDOM.render(<App />, document.getElementById('root'));
 // Fora do componente App, renderize a HomePage diretamente
-ReactDOM.render(<HomePageForm />, document.getElementById('home-root'))
+ReactDOM.render(<HomePageForm />, document.getElementById('root'));
 
 export default App;

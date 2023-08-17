@@ -22,10 +22,10 @@
 }
 
 .phrase {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 84px;
-    text-align: left; /* Centralizar o texto horizontalmente */
+    font-size: 55px;
+    text-align: left;
+    margin-inline-start: 100px;
+    margin-bottom: 80px;
 }
 
 .tx1{
@@ -50,11 +50,11 @@
 .ptext {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 32px;
     color: #404040;
-    margin-inline-start: 20px;
     padding-bottom: 30px;
+    margin-inline-start: 120px;
 }
 
 .homep-header {
@@ -101,5 +101,9 @@
     
     .phrase {
         text-align: center; /* Centralizar o texto horizontalmente */
+    }
+
+    .bag-container {
+        margin-left: 0px; 
     }
 }

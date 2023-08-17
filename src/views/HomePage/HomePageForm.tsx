@@ -10,6 +10,8 @@ import './HomePageForm.css';
 
 import { cardImages } from '../../UI/imagesPath';
 
+import { ReactComponent as BagIcon } from './icons/bag.svg';
+
 
 interface CardData {
   title: string;
@@ -91,7 +93,10 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => { // Destruct
     <div>
       <header className="homep-header">
         <Logo />
-        <BarraPesquisa />
+        <BarraPesquisa /> 
+        <div className="bag-button">
+          <BagIcon /> {/* Render the bag SVG */}
+        </div>
       </header>
 
       <div className="homep-container">
