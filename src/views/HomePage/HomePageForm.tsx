@@ -12,7 +12,6 @@ import { cardImages } from '../../UI/imagesPath';
 
 import { ReactComponent as BagIcon } from './icons/bag.svg';
 
-
 interface CardData {
   title: string;
   description: string;
@@ -20,13 +19,14 @@ interface CardData {
 }
 
 interface HomePageFormProps {
-    backUrl?: string;
+  backUrl?: string;
 }
 
-const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => { // Destructure the prop here
+const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
   const [numColumns, setNumColumns] = useState(4);
   const [cards, setCards] = useState<CardData[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isBagOpen, setIsBagOpen] = useState(false); // Bag state
 
   useEffect(() => {
     const handleResize = () => {
@@ -89,27 +89,38 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => { // Destruct
     fetchCards();
   }, []);
 
+  const handleBagClick = () => {
+    setIsBagOpen(!isBagOpen);
+  };
+
   return (
     <div>
       <header className="homep-header">
         <Logo />
-        <BarraPesquisa /> 
-        <div className="bag-button">
+        <BarraPesquisa />
+        <div className="bag-button" onClick={handleBagClick}>
           <BagIcon /> {/* Render the bag SVG */}
         </div>
       </header>
 
+      {isBagOpen && (
+        <div className="bag-content">
+          {/* Content of the bag */}
+          {/* Items, total, etc. here */}
+        </div>
+      )}
+
       <div className="homep-container">
         <div className="form-group-text">
-        <h1 className="phrase">
-        <span className="tx1">Premium </span> 
-        <span className="tx2">quality<br /></span> 
-        <span className="tx3">
-          Food for your <img src={bananaIcon} alt="Banana Icon" className="imagem" />
-        </span>{" "}
-        <span className="tx4">healthy<br /></span>{" "} 
-        <span className="tx5"><img src={appleIcon} alt="Apple Icon" className="imagem" />& Daily Life</span>
-        </h1>
+          <h1 className="phrase">
+            <span className="tx1">Premium </span>
+            <span className="tx2">quality<br /></span>
+            <span className="tx3">
+              Food for your <img src={bananaIcon} alt="Banana Icon" className="imagem" />
+            </span>{" "}
+            <span className="tx4">healthy<br /></span>
+            <span className="tx5"><img src={appleIcon} alt="Apple Icon" className="imagem" />& Daily Life</span>
+          </h1>
         </div>
         <p className='ptext'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut<br />
@@ -122,27 +133,25 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => { // Destruct
         {loading ? (
           <p>Loading...</p>
         ) : (
-  
-        <div className="homep-cards-columns">
-          {Array.from({ length: numColumns }).map((_, colIndex) => (
-            <div key={colIndex} className="homep-cards-column">
-              {cards
-                .slice(
-                  colIndex * Math.ceil(cards.length / numColumns),
-                  (colIndex + 1) * Math.ceil(cards.length / numColumns)
-                )
-                .map((card, cardIndex) => (
-                  <Card
-                    key={cardIndex}
-                    title={card.title}
-                    description={card.description}
-                    hpageImages={cardImages}
-                  />
-                ))}
-            </div>
-          ))}
-        </div>
-
+          <div className="homep-cards-columns">
+            {Array.from({ length: numColumns }).map((_, colIndex) => (
+              <div key={colIndex} className="homep-cards-column">
+                {cards
+                  .slice(
+                    colIndex * Math.ceil(cards.length / numColumns),
+                    (colIndex + 1) * Math.ceil(cards.length / numColumns)
+                  )
+                  .map((card, cardIndex) => (
+                    <Card
+                      key={cardIndex}
+                      title={card.title}
+                      description={card.description}
+                      hpageImages={cardImages}
+                    />
+                  ))}
+              </div>
+            ))}
+          </div>
         )}
       </div>
 
