@@ -4,6 +4,8 @@ import Logo from '../../components/Logo/Logo';
 import Footer from '../../components/Footer/Footer';
 import axios from 'axios';
 
+import bcrypt from 'bcryptjs';
+
 interface RegisterFormProps {}
 
 const RegisterForm: React.FC<RegisterFormProps> = () => {
@@ -16,50 +18,53 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
   // Novo estado para rastrear campos vazios
   const [isEmptyFields, setIsEmptyFields] = useState(false); 
 
+  
   const handleRegister = async () => {
     if (!fullName || !username || !email || !password || password !== confirmPassword) {
-      setIsEmptyFields(true); // Renderiza alerta se isEmptyFields for verdadeiro
-      // Se o usuário não preencher todos os campos obrigatórios ou se as senhas não corresponder
-      setError('Please fill out all fields and ensure passwords match.'); 
+      setIsEmptyFields(true);
+      setError('Please fill out all fields and ensure passwords match.');
       return;
     }
 
-    const createUserMutation = `
-      mutation SignUp($username: String!, $password: String!) {
-        signUp(input: {
-          fields: {
-            username: $username
-            password: $password
-          }
-        }) {
-          viewer {
-            user {
-              id
-              createdAt
+    try {
+      // Criptografe a senha antes de enviar
+      const hashedPassword = await bcrypt.hash(password, 10); // O segundo argumento é o número de saltos (rounds)
+    
+      const createUserMutation = `
+        mutation SignUp($username: String!, $password: String!) {
+          signUp(input: {
+            fields: {
+              username: $username
+              password: $password
             }
-            sessionToken
+          }) {
+            viewer {
+              user {
+                id
+                createdAt
+              }
+              sessionToken
+            }
           }
         }
-      }
-    `;
+      `;
 
-    const requestBody = {
-      query: createUserMutation,
-      variables: {
-        username: username,
-        password: password,
-      },
-    };
+      const requestBody = {
+        query: createUserMutation,
+        variables: {
+          username: username,
+          password: hashedPassword, // Use a senha criptografada
+        },
+      };
 
-    const headers = {
-      'X-Parse-Application-Id': 'DSiIkHz2MVbCZutKS7abtgrRVsiLNNGcs0L7VsNL',
-      'X-Parse-Master-Key': '0cpnqkSUKVkIDlQrNxameA6OmjxmrA72tsUMqVG9',
-      'X-Parse-Client-Key': 'zXOqJ2k44R6xQqqlpPuizAr3rs58RhHXfU7Aj20V',
-      'X-Parse-Revocable-Session': '1',
-      'Content-Type': 'application/json',
-    };
+      const headers = {
+        'X-Parse-Application-Id': 'DSiIkHz2MVbCZutKS7abtgrRVsiLNNGcs0L7VsNL',
+        'X-Parse-Master-Key': '0cpnqkSUKVkIDlQrNxameA6OmjxmrA72tsUMqVG9',
+        'X-Parse-Client-Key': 'zXOqJ2k44R6xQqqlpPuizAr3rs58RhHXfU7Aj20V',
+        'X-Parse-Revocable-Session': '1',
+        'Content-Type': 'application/json',
+      };
 
-    try {
       const response = await axios.post('https://parseapi.back4app.com/graphql', JSON.stringify(requestBody), { headers });
       const userData = response.data.data.signUp.viewer.user;
       const sessionToken = response.data.data.signUp.viewer.sessionToken;
@@ -67,6 +72,7 @@ const RegisterForm: React.FC<RegisterFormProps> = () => {
       console.log('Session token:', sessionToken);
     } catch (error) {
       console.error('Error creating user:', error);
+      setError('Registration failed. Please try again.');
     }
   };
 

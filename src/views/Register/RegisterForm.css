@@ -37,10 +37,11 @@ html, body {
   
 .register-text {
     font-weight: 500;
-    width: 100%;
+    width: 85%;
     display: flex;
     color: #000000;
     border-bottom: 1px solid #808080;
+    margin-inline-start: 100px;
 }
 
 .register-container {

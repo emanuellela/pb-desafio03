@@ -9,8 +9,8 @@ function App() {
   return (
     <div className="App">
       {/* <Logo /> */}
-      <LoginForm />
-      {/*<RegisterForm />  */}
+      {/*<LoginForm />*/}
+      <RegisterForm />
       {/* <HomePageForm /> */}
       {/*<Card title={''} description={''} hpageImages={[]} />*/}
     </div>
