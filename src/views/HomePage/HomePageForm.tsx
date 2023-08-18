@@ -9,6 +9,7 @@ import axios from 'axios';
 import Footer from '../../components/Footer/Footer';
 import './HomePageForm.css';
 import homePageImage from './images/home-page.png'; 
+import homePageDetail from './images/detail.png'; 
 import { cardImages } from '../../UI/imagesPath';
 
 interface CardData {
@@ -128,7 +129,9 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
       )}
 
       <div className='home-page'>
-
+        <div className='img-detail'>
+            <img src={homePageDetail} alt="" className="homep-detail" />
+        </div>
         <div className="homep-container">
           <div className="form-group-text">
             <h1 className="phrase">

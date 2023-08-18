@@ -8,8 +8,12 @@
 .phrase {
     font-size: 35px;
     text-align: left;
-    margin-inline-start: 100px;
     margin-bottom: 80px;
+    margin-inline-start: 50px;
+}
+
+.image-detail {
+    margin-top: 330px;
 }
 
 .tx1{
@@ -35,12 +39,12 @@
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-size: 12px;
-    line-height: 24px; /* Ajuste o espaçamento vertical */
+    line-height: 24px;
     color: #404040;
-    padding-bottom: 15px; /* Ajuste o espaçamento inferior */
-    margin-inline-start: 120px;
-    margin-top: -80px; /* Subir a frase */
-    margin-bottom: 10px; /* Diminuir o espaçamento inferior */
+    padding-bottom: 15px;
+    margin-inline-start: 70px;
+    margin-top: -80px;
+    margin-bottom: 10px;
 }
 
 .homep-header {
@@ -140,9 +144,10 @@
 @media (max-width: 600px) {
     .ptext {
         font-weight: 200;
-        font-size: 11px;
-        line-height: 14px; 
-        margin-inline-start: 20px;
+        font-size: 8px;
+        line-height: 14px;
+        margin-inline-start: 40px;
+        margin-top: 40px;
     }
 
     .form-group-text {
@@ -185,7 +190,12 @@
     .signin-button {
         margin-bottom: 5px;
     }
+
     .home-page {
         flex-direction: column;
+    }
+
+    .img-detail {
+        display:none;
     }
 }
