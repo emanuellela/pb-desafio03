@@ -93,7 +93,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
           />
         </div>
         <button className="login-button" onClick={handleLogin}>
-          Login
+          Get Started
         </button>
         {isEmptyFields && <div className="error">Please fill out all fields.</div>}
         {error && <div className="error">{error}</div>}

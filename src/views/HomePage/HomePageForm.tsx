@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Logo } from '../../components/Logo/Logo';
 import BarraPesquisa from '../../components/BarraPesquisa/BarraPesquisa';
 import { ReactComponent as BagIcon } from './icons/bag.svg';
+
 import appleIcon from './images/apple.png';
 import bananaIcon from './images/banana.png';
 import Card from '../../components/Card/CardHomePage';
@@ -157,30 +158,24 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
         </div>
       </div>
 
+      <h1 className='page-title'>Restaurants</h1>
+
       <div className="homep-cards-container">
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <div className="homep-cards-columns">
-            {Array.from({ length: numColumns }).map((_, colIndex) => (
-              <div key={colIndex} className="homep-cards-column">
-                {cards
-                  .slice(
-                    colIndex * Math.ceil(cards.length / numColumns),
-                    (colIndex + 1) * Math.ceil(cards.length / numColumns)
-                  )
-                  .map((card, cardIndex) => (
-                    <Card
-                      key={cardIndex}
-                      name={card.node.name}
-                      objectId={card.node.objectId}
-                      location={card.node.location}
-                      rating={card.node.rating}
-                      image={cardImages[0]}
-                      deliveryTime= {card.node.deliveryTime}
-                    />
-                  ))}
-              </div>
+          <div className="homep-cards-grid">
+            {cards.slice(0, 8).map((card) => (
+              <Card
+                key={card.node.objectId}
+                name={card.node.name}
+                objectId={card.node.objectId}
+                location={card.node.location}
+                rating={card.node.rating}
+                // Seleciona uma imagem aleatória
+                image={cardImages[Math.floor(Math.random() * cardImages.length)]} 
+                deliveryTime={card.node.deliveryTime}
+              />
             ))}
           </div>
         )}

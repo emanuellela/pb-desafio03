@@ -2,7 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 .homep-cards-container {
-    background-color: pink;
+    background-color: #FFFFFF;
+    margin-left: -75px;
+}
+
+.homep-cards-grid {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 120px;
+    margin-top: 40px;
 }
 
 .phrase {
@@ -12,7 +21,7 @@
     margin-inline-start: 50px;
 }
 
-.image-detail {
+.img-detail {
     margin-top: 330px;
 }
 
@@ -140,8 +149,26 @@
     margin-inline-end: 40px; /* Define a margem na lateral direita */
     margin-top: 130px;
 }
+
+.page-title {
+    font-family: 'Poppins', sans-serif;
+    color: #202020;
+    text-align: left;
+    margin-bottom: 20px;
+    margin-left: 80px;
+    font-size: 18px;
+    font-weight:400;
+}
+
 /* Media query para largura de até 600px */
 @media (max-width: 600px) {
+    .homep-cards-grid {
+        display: grid;
+        justify-items: left;
+        grid-template-columns: 1fr 1fr;
+        margin-left: 80px;
+    }
+
     .ptext {
         font-weight: 200;
         font-size: 8px;
@@ -193,9 +220,18 @@
 
     .home-page {
         flex-direction: column;
+        margin-top: -90px;
     }
 
     .img-detail {
         display:none;
+    }
+
+    .img-homep {
+        margin-top: -110px;
+    }
+
+    .page-title {
+        margin-left: 40px;
     }
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 .card {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -6,20 +8,76 @@
     width: 250px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-  
+
+.card-with-bg {
+    background-color: #F8F8F8; /* Fundo dentro do card */
+}
+
+.card-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
 .card-image {
     width: 100%;
     height: auto;
     border-radius: 8px;
 }
   
-.card-title {
+.card-name {
+    font-family: 'Poppins', sans-serif;
+    color: #202020;
     font-size: 1.2rem;
     margin-top: 10px;
 }
-  
-.card-description {
-    font-size: 1rem;
-    color: #666;
-    margin-top: 8px;
+
+.card-location {
+    font-family: 'Poppins', sans-serif;
+    color: #808080;
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+.card-rating {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Poppins', sans-serif;
+    color: #202020;
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.card-deliveryt {
+    font-family: 'Poppins', sans-serif;
+    color: #202020;
+    text-align: center;
+}
+
+.star-icon {
+    fill: #00b300; /* Cor do ícone de estrela */
+    width: 16px; 
+    height: 16px;
+    margin-right: 5px; 
+}
+
+.get-card {
+    margin-right: 10px;
+}
+
+.card-image {
+    width: 100%; 
+}
+
+/* Media query para largura de até 600px */
+@media (max-width: 600px) {
+    .card {
+        width: 150px;
+    }
+
+    .card-image {
+        width: 90%; 
+        margin-left: 8px;
+    }
 }
