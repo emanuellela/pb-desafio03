@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Logo } from '../../components/Logo/Logo';
 import BarraPesquisa from '../../components/BarraPesquisa/BarraPesquisa';
 import { ReactComponent as BagIcon } from './icons/bag.svg';
-
 import appleIcon from './images/apple.png';
 import bananaIcon from './images/banana.png';
 import Card from '../../components/Card/CardHomePage';
@@ -33,6 +32,9 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
   const [cards, setCards] = useState<CardData[]>([]);
   const [loading, setLoading] = useState(true);
   const [isBagOpen, setIsBagOpen] = useState(false); // Bag state
+
+  const [searchTerm, setSearchTerm] = useState(''); // Estado para o termo de pesquisa
+  const [filteredCards, setFilteredCards] = useState<CardData[]>([]); // Estado para os cards filtrados
 
   useEffect(() => {
     const handleResize = () => {
@@ -103,23 +105,36 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
     fetchCards();
   }, []);
 
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
+  // Icon bag
   const handleBagClick = () => {
     setIsBagOpen(!isBagOpen);
   };
+
+  useEffect(() => {
+    const filtered = cards.filter((card) =>
+      card.node.name && card.node.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredCards(filtered);
+  }, [cards, searchTerm]);
 
   return (
     <div>
       <header className="homep-header">
         <Logo />
         <div className='barra-icon'>
-          <BarraPesquisa />
-          <div className="bag-button" onClick={handleBagClick}>
-            <BagIcon /> {/* Render the bag SVG */}
-          </div>
-          <button className="signin-button">
-            Sign In
-          </button>
+        <BarraPesquisa value={searchTerm} onChange={handleSearchChange} />
+        <div className="bag-button" onClick={handleBagClick}>
+          {/* Render the bag SVG */}
+          <BagIcon />
         </div>
+        <button className="signin-button">
+          Sign In
+        </button>
+      </div>
       </header>
 
       {isBagOpen && (
@@ -128,6 +143,8 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
           {/* Items, total, etc. here */}
         </div>
       )}
+
+      
 
       <div className='home-page'>
         <div className='img-detail'>
