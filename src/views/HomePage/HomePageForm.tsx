@@ -8,13 +8,18 @@ import Card from '../../components/Card/CardHomePage';
 import axios from 'axios';
 import Footer from '../../components/Footer/Footer';
 import './HomePageForm.css';
-import { cardImages } from '../../UI/imagesPath';
 import homePageImage from './images/home-page.png'; 
+import { cardImages } from '../../UI/imagesPath';
 
 interface CardData {
-  title: string;
-  description: string;
-  imageSrc: string;
+  node: {
+    objectId: string;
+    name: string;
+    rating:number;
+    deliveryTime: string;
+    image: string;
+    location: string;
+  }
 }
 
 interface HomePageFormProps {
@@ -83,7 +88,7 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
           }
         );
         console.log(response);
-        const cardData = response.data.data.cards;
+        const cardData = response.data.data.fitMes.edges;
 
         console.log('Card data:', cardData);
         setCards(cardData);
@@ -123,6 +128,7 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
       )}
 
       <div className="homep-container">
+        <img src={homePageImage} alt="" />
         <div className="homep-image" style={{ backgroundImage: `url(${homePageImage})` }}></div>
         <div className="form-group-text">
           <h1 className="phrase">
@@ -158,9 +164,12 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
                   .map((card, cardIndex) => (
                     <Card
                       key={cardIndex}
-                      title={card.title}
-                      description={card.description}
-                      hpageImages={cardImages}
+                      name={card.node.name}
+                      objectId={card.node.objectId}
+                      location={card.node.location}
+                      rating={card.node.rating}
+                      image={cardImages[0]}
+                      deliveryTime= {card.node.deliveryTime}
                     />
                   ))}
               </div>
