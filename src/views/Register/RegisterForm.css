@@ -127,4 +127,9 @@ html, body {
         align-items: center; /* Vertical */
         margin-bottom: 20px; 
     }
+
+    .space-vertical {
+        margin: inherit;
+        width: -moz-available;
+    }
 }
