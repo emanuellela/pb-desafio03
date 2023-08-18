@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+.homep-cards-container {
+    background-color: #FFFFFF;
+    margin-left: -75px;
+}
+
+.homep-cards-grid {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 120px;
+    margin-top: 40px;
+}
+
+.phrase {
+    font-size: 35px;
+    text-align: left;
+    margin-bottom: 80px;
+    margin-inline-start: 50px;
+}
+
+.img-detail {
+    margin-top: 330px;
+}
+
+.tx1{
+    color: #202020;
+}
+
+.tx2 {
+    color: #FC8019;
+    white-space: pre-line;
+}
+.tx3 {
+    color: #202020;
+}
+.tx4 {
+    color: #FC8019;
+    white-space: pre-line;
+}
+.tx5 {
+    color: #FC8019;
+}
+
+.ptext {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    color: #404040;
+    padding-bottom: 15px;
+    margin-inline-start: 70px;
+    margin-top: -80px;
+    margin-bottom: 10px;
+}
+
+.homep-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    margin-right: 100px;
+}
+
+.barra-icon {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.barra-icon {
+    display: flex;
+    align-items: center;
+  }
+  
+.signin-button {
+    font-family: 'Inter', sans-serif;
+    background-color: #202020;
+    color: #FDFBFA;
+    border: none;
+    padding: 7px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: revert;
+    border-radius: 5px;
+    white-space: nowrap;
+    margin-inline-start: -12px;
+    text-decoration: none;
+}
+  
+.signin-button:hover {
+    background-color: #333; /* Cor de fundo ao passar o mouse */
+}
+
+.bag-button {
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transição suave */
+    margin-right: 10px;
+}
+  
+.bag-button.open {
+    background-color: #504141; /* Cor de fundo quando a sacola está aberta */
+}
+
+.homep-image {
+    width: 100%; 
+    height: auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.home-page {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 80px;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;
+    gap: 15px;
+}
+
+.form-group-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinhar o conteúdo à esquerda */
+    margin-inline-start: 20px;
+    margin-bottom: 30px; /* Ajustar essa margem para espaçamento adequado */
+}
+
+.form-group-text h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.img-homep {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinhar a imagem à esquerda */
+}
+
+.homep-image {
+    margin-top: 130px;
+}
+
+.homep-container {
+    text-align: left; /* Alinha o conteúdo à direita */
+    margin-inline-end: 40px; /* Define a margem na lateral direita */
+    margin-top: 130px;
+}
+
+.page-title {
+    font-family: 'Poppins', sans-serif;
+    color: #202020;
+    text-align: left;
+    margin-bottom: 20px;
+    margin-left: 80px;
+    font-size: 18px;
+    font-weight:400;
+}
+
+/* Media query para largura de até 600px */
+@media (max-width: 600px) {
+    .homep-cards-grid {
+        display: grid;
+        justify-items: left;
+        grid-template-columns: 1fr 1fr;
+        margin-left: 80px;
+    }
+
+    .ptext {
+        font-weight: 200;
+        font-size: 8px;
+        line-height: 14px;
+        margin-inline-start: 40px;
+        margin-top: 40px;
+    }
+
+    .form-group-text {
+        align-items: center; /* Centralizar verticalmente */
+        text-align: center; /* Centralizar o texto horizontalmente */
+        margin-bottom: 0%;
+    }
+
+    .form-group-text h1 {
+        font-weight: 200;
+        font-size: 54px;
+        line-height: 60px; /* Reduzindo o espaço vertical entre as linhas */
+        margin: 0; /* Removendo margem padrão dos h1 */
+        padding-inline-start: 10px;
+    }
+
+    .homep-header {
+        gap: 100px;
+        margin-right: 0%;
+    }
+    
+    .phrase {
+        text-align: center; /* Centralizar o texto horizontalmente */
+    }
+
+    .bag-container {
+        margin-left: 0px; 
+    }
+
+    .barra-icon {
+        margin-inline-start: -20px;
+    }
+
+    .bag-button {
+        cursor: pointer;
+        margin-top: inherit;
+        transition: background-color 0.3s ease; /* Transição suave */
+    }
+
+    .signin-button {
+        margin-bottom: 5px;
+    }
+
+    .home-page {
+        flex-direction: column;
+        margin-top: -90px;
+    }
+
+    .img-detail {
+        display:none;
+    }
+
+    .img-homep {
+        margin-top: -110px;
+    }
+
+    .page-title {
+        margin-left: 40px;
+    }
+}

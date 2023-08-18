@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './CardHomePage.module.css'; // Importando os estilos do CSS
+import styles from './CardHomePage.module.css';
 import { ReactComponent as GreenStar } from '../../views/HomePage/icons/green-star.svg';
 import { ReactComponent as GetCard } from '../../views/HomePage/icons/get-card.svg';
 import { cardImages } from '../../UI/imagesPath';

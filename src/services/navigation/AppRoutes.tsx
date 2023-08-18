@@ -4,6 +4,7 @@ import HomePageForm from '../../views/HomePage/HomePageForm';
 import Login from '../../views/Login/LoginForm';
 import Register from '../../views/Register/RegisterForm';
 import { AuthProvider } from './AuthContext';
+import DishPage from '../../views/DishPage/DishPageForm';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const AppRoutes: React.FC = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/homepage" element={<HomePageForm />} />
-          //pratos
+          <Route path="/dishpage" element={<DishPage />} />
         </Routes>
       </AuthProvider> 
     </>

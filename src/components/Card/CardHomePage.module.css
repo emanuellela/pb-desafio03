@@ -7,6 +7,12 @@
     margin: 10px;
     width: 250px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s; /* Adicione transições para um efeito suave */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Aumenta um pouco o tamanho */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aumenta a sombra */
 }
 
 .card-with-bg {
