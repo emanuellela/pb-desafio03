@@ -59,21 +59,25 @@ const DishPageForm: React.FC<DishFormProps> = ({ backUrl }) => {
         };
 
         const graphQLQuery = `
-          query GetAllRestaurants {
-            Dishes {
-              count
+        query Dishes {
+          dishes {
               edges {
-                node {
-                  objectId
-                  name
-                  price
-                  description
-                  image
+                  node {
+                    id
+                    objectId
+                    createdAt
+                    updatedAt
+                    name
+                    price
+                    image
+                    description
+                    query
+                    variables                
+                  }
                 }
               }
             }
-          }
-        `;    
+         `;    
     
         const response = await axios.post(
           'https://parseapi.back4app.com/graphql',
@@ -120,8 +124,8 @@ const DishPageForm: React.FC<DishFormProps> = ({ backUrl }) => {
             {/* Render the bag SVG */}
           <BagIcon />
         </div>
-        <Link to="/login" className="checkout-button">
-          Checkout
+        <Link to="/login" className="signin-button">
+          Sign In
         </Link>
       </div>
       </header>

@@ -33,7 +33,6 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
   const [cards, setCards] = useState<CardData[]>([]);
   const [loading, setLoading] = useState(true);
   const [isBagOpen, setIsBagOpen] = useState(false); // Bag state
-
   const [searchTerm, setSearchTerm] = useState(''); // Estado para o termo de pesquisa
   const [filteredCards, setFilteredCards] = useState<CardData[]>([]); // Estado para os cards filtrados
 
