@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { ReactComponent as GreenStar } from '../HomePage/icons/green-star.svg';
 import CardDish from '../../components/CardDish/CardDish'; 
 import { cardImagesDishes } from '../../UI/imagesPath';
+import dishPageImage from './images/lunch.png'; 
 
 interface CardData {
   node: {
@@ -59,8 +60,8 @@ const DishPageForm: React.FC<DishFormProps> = ({ backUrl }) => {
         };
 
         const graphQLQuery = `
-        query Dishes {
-          dishes {
+          query Dishes {
+            dishes {
               edges {
                   node {
                     id
@@ -77,7 +78,7 @@ const DishPageForm: React.FC<DishFormProps> = ({ backUrl }) => {
                 }
               }
             }
-         `;    
+        `;    
     
         const response = await axios.post(
           'https://parseapi.back4app.com/graphql',
@@ -94,8 +95,8 @@ const DishPageForm: React.FC<DishFormProps> = ({ backUrl }) => {
         console.log('Card data:', cardData);
         setCards(cardData);
         setLoading(false);
-      } catch (error) {
-        console.error('Error fetching card data:', error);
+        } catch (error) {
+          console.error('Error fetching card data:', error);
       }
     };
 
@@ -138,30 +139,30 @@ const DishPageForm: React.FC<DishFormProps> = ({ backUrl }) => {
       )}
 
       <div className='dish-page'>
-        <div className='lunch-img'>
-            <p>img lunch</p>
-        </div>
-        <div className="dish-container">
-          <div className="group-text">
-            <h1 className="title-lunchbox">
-              LunchBox - Meals and Thalis
-            </h1>
-            <p>
-              North Indian, Punjabi
-            </p>
-            <div className='column-text'>
-              <div className='one-lunch'>
-                <GreenStar />
-                <p>4.0</p>
-                <p>100+ ratings</p>
-              </div>
-              <div className='two-lunch'>
-                <p>30 Mins</p>
-                <p>Delivery Time</p>
-              </div>
-              <div className='three-lunch'>
-                <p>₹200</p>
-                <p>Cost for two</p>
+        <div className='lunch-page'>
+          <img src={dishPageImage} alt="" className="dishp-image" />
+          <div className="dish-container">
+            <div className="group-text">
+              <h1 className="title-lunchbox">
+                LunchBox - Meals and Thalis
+              </h1>
+              <p>
+                North Indian, Punjabi
+              </p>
+              <div className='column-text'>
+                <div className='one-lunch'>
+                  <GreenStar />
+                  <p>4.0</p>
+                  <p>100+ ratings</p>
+                </div>
+                <div className='two-lunch'>
+                  <p>30 Mins</p>
+                  <p>Delivery Time</p>
+                </div>
+                <div className='three-lunch'>
+                  <p>₹200</p>
+                  <p>Cost for two</p>
+                </div>
               </div>
             </div>
           </div>
@@ -174,15 +175,17 @@ const DishPageForm: React.FC<DishFormProps> = ({ backUrl }) => {
         </div>
       </div>
 
+      <div className='recommended'>
+            <p>Recommended</p>
+        <div>
+
       <div className='middle-page'>
-        <div className='recommended'>
-          <p>recommended</p>
           <p>Breakfast Box</p>
           <p>Lunch Box</p>
-          <p>Combo Box</p>
+          <p>Combo Box</p> 
           <p>Biriyani Box</p>
+          </div>
         </div>
-
       </div>
 
       <div className="dish-cards-container">

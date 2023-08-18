@@ -123,9 +123,14 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
         <Logo />
         <div className='barra-icon'>
         <BarraPesquisa value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} onSearch={handleSearch} />
-        <div className="bag-button"> {/*onClick={handleBagClick}*/} 
+        
+        <Link to="/dishpage" className="bag-button">
           {/* Render the bag SVG */}
           <BagIcon />
+        </Link>
+
+        <div className="bag-button"> {/*onClick={handleBagClick}*/} 
+
         </div>
         <Link to="/login" className="signin-button">
           Sign In
@@ -139,8 +144,6 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
           {/* Items, total, etc. here */}
         </div>
       )}
-
-      
 
       <div className='home-page'>
         <div className='img-detail'>
@@ -167,7 +170,7 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
         </div>
         
         <div className='img-homep'>
-            <img src={homePageImage} alt="" className="homep-image" />
+          <img src={homePageImage} alt="" className="homep-image" />
         </div>
       </div>
 

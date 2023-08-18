@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-.homep-cards-container {
+
+.dish-cards-container {
     background-color: #FFFFFF;
     margin-left: -75px;
 }
 
-.homep-cards-grid {
+.dish-cards-grid {
     display: grid;
     justify-items: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -14,49 +15,7 @@
     margin-top: 40px;
 }
 
-.phrase {
-    font-size: 35px;
-    text-align: left;
-    margin-bottom: 80px;
-    margin-inline-start: 50px;
-}
-
-.img-detail {
-    margin-top: 330px;
-}
-
-.tx1{
-    color: #202020;
-}
-
-.tx2 {
-    color: #FC8019;
-    white-space: pre-line;
-}
-.tx3 {
-    color: #202020;
-}
-.tx4 {
-    color: #FC8019;
-    white-space: pre-line;
-}
-.tx5 {
-    color: #FC8019;
-}
-
-.ptext {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 24px;
-    color: #404040;
-    padding-bottom: 15px;
-    margin-inline-start: 70px;
-    margin-top: -80px;
-    margin-bottom: 10px;
-}
-
-.homep-header {
+.dish-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -69,13 +28,9 @@
     display: flex;
     flex-direction: row;
     gap: 5px;
+    align-items: center;
 }
 
-.barra-icon {
-    display: flex;
-    align-items: center;
-  }
-  
 .signin-button {
     font-family: 'Inter', sans-serif;
     background-color: #202020;
@@ -105,7 +60,7 @@
     background-color: #504141; /* Cor de fundo quando a sacola está aberta */
 }
 
-.homep-image {
+.dishp-image {
     width: 100%; 
     height: auto;
     background-size: cover;
@@ -113,16 +68,16 @@
     background-repeat: no-repeat;
 }
 
-.home-page {
+.dish-page {
     display: flex;
     flex-direction: row;
-    margin-bottom: 80px;
-    justify-content: center; /* Centraliza horizontalmente */
+    justify-content: center;
     align-items: center;
     gap: 15px;
-}
+    background-color: #202020;
+}  
 
-.form-group-text {
+.group-text {
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Alinhar o conteúdo à esquerda */
@@ -130,28 +85,18 @@
     margin-bottom: 30px; /* Ajustar essa margem para espaçamento adequado */
 }
 
-.form-group-text h1 {
+.group-text h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
 
-.img-homep {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Alinhar a imagem à esquerda */
-}
-
-.homep-image {
-    margin-top: 130px;
-}
-
-.homep-container {
+.dish-container {
     text-align: left; /* Alinha o conteúdo à direita */
     margin-inline-end: 40px; /* Define a margem na lateral direita */
     margin-top: 130px;
 }
 
-.page-title {
+.title-lunchbox {
     font-family: 'Poppins', sans-serif;
     color: #202020;
     text-align: left;
@@ -159,6 +104,47 @@
     margin-left: 80px;
     font-size: 18px;
     font-weight:400;
+}
+
+.lunch-page {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Primeira coluna para a imagem, segunda coluna para o conteúdo */
+    gap: 20px; /* Espaçamento entre as colunas */
+    align-items: center; /* Alinhar verticalmente */
+  }
+  
+.column-text {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Distribuir em três colunas */
+    gap: 15px; /* Espaçamento entre as colunas */
+    align-items: center; /* Alinhar verticalmente */
+}
+  
+.vertical-line,
+.vertical-line2 {
+    border-right: 1px solid #ccc;
+    height: 50px;
+    margin: 0;
+}
+
+.recommended {
+   color:#FC8019;
+   margin-inline-start: 200px;
+}
+
+.middle-page {
+    color:#404040
+}
+
+.column-text {
+    display: flex;
+    align-items: center; /* Alinhar verticalmente */
+}
+  
+.vertical-line .vertical-line2 {
+    border-right: 1px solid #ccc; /* Adicionar uma borda à direita para criar a linha vertical */
+    height: 50px; /* Ajuste a altura da linha de acordo com o layout */
+    margin: 0 15px; /* Margens para espaçamento */
 }
 
 /* Media query para largura de até 600px */
