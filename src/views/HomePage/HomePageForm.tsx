@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { Logo } from '../../components/Logo/Logo';
 import BarraPesquisa from '../../components/BarraPesquisa/BarraPesquisa';
+import { ReactComponent as BagIcon } from './icons/bag.svg';
 import appleIcon from './icons/apple.svg';
 import bananaIcon from './icons/banana.svg';
 import Card from '../../components/Card/CardHomePage';
 import axios from 'axios';
 import Footer from '../../components/Footer/Footer';
-import Logo from '../../components/Logo/Logo';
 import './HomePageForm.css';
-
 import { cardImages } from '../../UI/imagesPath';
-
-import { ReactComponent as BagIcon } from './icons/bag.svg';
-
-import { IoLogIn } from 'react-icons/io5';
+import homePageImage from './images/home-page.png'; 
 
 interface CardData {
   title: string;
@@ -60,13 +57,13 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
 
         const graphQLQuery = `
           query {
-            cards {
+            class {
               title
               description
               imageSrc
             }
           }
-        `;
+        `;     
 
         const response = await axios.post(
           'https://parseapi.back4app.com/graphql',
@@ -77,7 +74,7 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
             headers: headers,
           }
         );
-
+        console.log(response);
         const cardData = response.data.data.cards;
 
         console.log('Card data:', cardData);
@@ -118,6 +115,7 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
       )}
 
       <div className="homep-container">
+        <div className="homep-image" style={{ backgroundImage: `url(${homePageImage})` }}></div>
         <div className="form-group-text">
           <h1 className="phrase">
             <span className="tx1">Premium </span>
@@ -134,6 +132,7 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
           labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco<br />
           laboris nisi ut aliquip ex ea commodo consequat.
         </p>
+
       </div>
 
       <div className="homep-cards-container">

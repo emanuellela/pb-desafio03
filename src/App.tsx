@@ -10,13 +10,13 @@ function App() {
       <Router>
         <AppRoutes />
       </Router>
-      <HomePageForm/>
+      {/*<HomePageForm/>*/}
     </div>
   );
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
-// Fora do componente App, renderize a HomePage diretamente
+// Rederiza HomePage diretamente
 ReactDOM.render(<HomePageForm />, document.getElementById('root'));
 
 export default App;

@@ -101,7 +101,13 @@
     background-color: #f0f0f0; /* Cor de fundo quando a sacola está aberta */
 }
 
-
+.homep-image {
+    width: 100%; /* Ou outro valor que faça sentido para o layout */
+    height: auto;
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+  }
   
 /* Media query para largura de até 600px */
 @media (max-width: 600px) {

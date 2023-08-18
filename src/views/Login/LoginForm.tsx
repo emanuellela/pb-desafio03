@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Logo from '../../components/Logo/Logo';
+import { Logo } from '../../components/Logo/Logo';
 import Footer from '../../components/Footer/Footer';
 import './LoginForm.css';
 

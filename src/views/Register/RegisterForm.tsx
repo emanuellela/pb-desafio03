@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './RegisterForm.css';
-import Logo from '../../components/Logo/Logo';
+import { Logo } from '../../components/Logo/Logo';
 import Footer from '../../components/Footer/Footer';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
-import { Link, useNavigate } from 'react-router-dom';
 
 interface RegisterFormProps {
   backUrl?: string;
