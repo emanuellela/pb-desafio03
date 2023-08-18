@@ -9,7 +9,7 @@ const Logo: React.FC = () => {
 
   return (
     <div className="logo-logo">
-      <Link to={isAuthenticated ? '/dashboard' : '/login'}>
+      <Link to={isAuthenticated ? '/dashboard' : '/homepage'}>
         <img src={iconLogo} className="logo" alt="Logo" />
         <h2>FitMe</h2>
       </Link>

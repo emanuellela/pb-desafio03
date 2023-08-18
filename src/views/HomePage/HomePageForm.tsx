@@ -12,6 +12,8 @@ import homePageImage from './images/home-page.png';
 import homePageDetail from './images/detail.png'; 
 import { cardImages } from '../../UI/imagesPath';
 
+import { Link } from 'react-router-dom';
+
 interface CardData {
   node: {
     objectId: string;
@@ -131,9 +133,9 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
           {/* Render the bag SVG */}
           <BagIcon />
         </div>
-        <button className="signin-button">
+        <Link to="/login" className="signin-button">
           Sign In
-        </button>
+        </Link>
       </div>
       </header>
 

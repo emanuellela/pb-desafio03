@@ -16,19 +16,25 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ backUrl }) => { // Destruct
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [isEmptyFields, setIsEmptyFields] = useState(false);
-
-  const routeChange = () => {
-    // ... your route changing logic ...
-    navigate('/login'); // Use router to navigate
-  };
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleRegister = async () => {
     if (!fullName || !username || !email || !password || password !== confirmPassword) {
       setIsEmptyFields(true);
       setError('Please fill out all fields and ensure passwords match.');
+      return;
+    }
+
+    if (!username || !password || !confirmPassword) {
+      setIsEmptyFields(true);
+      setError('Please fill out all fields and ensure passwords match.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match. Try Again!");
       return;
     }
 
@@ -78,11 +84,11 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ backUrl }) => { // Destruct
       console.log('Session token:', sessionToken);
       // Navegar para a página de login após o registro bem-sucedido
       navigate('/login');
+      window.confirm('Registration successful. You can now log in.');
     } catch (error) {
       console.error('Error creating user:', error);
       setError('Registration failed. Please try again.');
     }
-
   };
 
   return (
@@ -139,7 +145,9 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ backUrl }) => { // Destruct
             onChange={e => setConfirmPassword(e.target.value)}
           />
         </div>
-        <button className="register-button" onClick={routeChange}>Register</button>
+        <button className="register-button" onClick={handleRegister}>
+          Register
+        </button>
         {error && <div className="error">{error}</div>}
         <div className="register-link">
           <p>Yes, I have an account?</p>

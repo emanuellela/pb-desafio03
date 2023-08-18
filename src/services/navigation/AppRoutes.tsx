@@ -12,7 +12,8 @@ const AppRoutes: React.FC = () => {
         <Routes>
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/" element={<HomePageForm />} />
+          <Route path="/homepage" element={<HomePageForm />} />
+          //pratos
         </Routes>
       </AuthProvider> 
     </>
