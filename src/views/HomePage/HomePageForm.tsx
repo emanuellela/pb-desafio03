@@ -107,29 +107,25 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
     fetchCards();
   }, []);
 
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
-  };
-
-  // Icon bag
-  const handleBagClick = () => {
-    setIsBagOpen(!isBagOpen);
-  };
-
-  useEffect(() => {
+  const handleSearch = () => {
+    // Filtrar os cards pelo nome
     const filtered = cards.filter((card) =>
-      card.node.name && card.node.name.toLowerCase().includes(searchTerm.toLowerCase())
+      card.node.name && card.node.name.toLowerCase().includes(searchTerm)
     );
     setFilteredCards(filtered);
-  }, [cards, searchTerm]);
+  };
+
+  const filteredAndSortedCards = filteredCards.filter((card) =>
+    card.node.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+  );
 
   return (
     <div>
       <header className="homep-header">
         <Logo />
         <div className='barra-icon'>
-        <BarraPesquisa value={searchTerm} onChange={handleSearchChange} />
-        <div className="bag-button" onClick={handleBagClick}>
+        <BarraPesquisa value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} onSearch={handleSearch} />
+        <div className="bag-button"> {/*onClick={handleBagClick}*/} 
           {/* Render the bag SVG */}
           <BagIcon />
         </div>
@@ -184,25 +180,23 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
           <p>Loading...</p>
         ) : (
           <div className="homep-cards-grid">
-            {cards.slice(0, 8).map((card) => (
-              <Card
-                key={card.node.objectId}
-                name={card.node.name}
-                objectId={card.node.objectId}
-                location={card.node.location}
-                rating={card.node.rating}
-                // Seleciona uma imagem aleatória
-                image={cardImages[Math.floor(Math.random() * cardImages.length)]} 
-                deliveryTime={card.node.deliveryTime}
-              />
-            ))}
-          </div>
-        )}
-      </div>
-
-      <Footer />
+          {filteredAndSortedCards.slice(0, 8).map((card) => (
+            <Card
+              key={card.node.objectId}
+              name={card.node.name}
+              objectId={card.node.objectId}
+              location={card.node.location}
+              rating={card.node.rating}
+              // Seleciona uma imagem aleatória
+              image={cardImages[Math.floor(Math.random() * cardImages.length)]}
+              deliveryTime={card.node.deliveryTime}
+            />
+          ))}
+        </div>
+      )}
     </div>
-  );
-};
+    {/* ... */}
+  </div>
+);};
 
 export default HomePageForm;
