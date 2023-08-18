@@ -4,11 +4,16 @@
     margin-right: 8px;
 }
 
-.logo-logo {
+.logo-logo a {
     font-family: 'Poppins', sans-serif;
     display: flex;
     margin-top: 3px;
     margin-inline-start: 100px;
+    text-decoration: none;
+}
+
+.logo-logo a:visited {
+    color: #202020;
 }
 
 /* Media query para largura de até 600px */

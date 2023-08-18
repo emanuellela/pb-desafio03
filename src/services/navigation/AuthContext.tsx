@@ -1,9 +1,7 @@
-// AuthContext.tsx
 import React, { createContext, useContext } from 'react';
 
 interface AuthContextProps {
   isAuthenticated: boolean;
-  // Outros campos relevantes para a autenticação
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -25,4 +23,3 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     </AuthContext.Provider>
   );
 };
-

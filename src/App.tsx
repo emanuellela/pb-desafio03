@@ -17,6 +17,5 @@ function App() {
 
 ReactDOM.render(<App />, document.getElementById('root'));
 // Rederiza HomePage diretamente
-ReactDOM.render(<HomePageForm />, document.getElementById('root'));
-
+//ReactDOM.render(<HomePageForm />, document.getElementById('root'));
 export default App;

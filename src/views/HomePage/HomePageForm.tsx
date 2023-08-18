@@ -56,15 +56,23 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
         };
 
         const graphQLQuery = `
-          query {
-            class {
-              title
-              description
-              imageSrc
+          query GetAllRestaurants {
+            fitMes {
+              count
+              edges {
+                node {
+                  objectId
+                  name
+                  rating
+                  deliveryTime
+                  image
+                  location
+                }
+              }
             }
           }
-        `;     
-
+        `;    
+    
         const response = await axios.post(
           'https://parseapi.back4app.com/graphql',
           {
