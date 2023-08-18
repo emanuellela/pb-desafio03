@@ -5,20 +5,8 @@
     background-color: pink;
 }
 
-.form-group-text h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-}
-
-.form-group-text {
-    display: flex;
-    flex-direction: column;
-    margin-inline-start: 20px;
-    margin-bottom: -70px;
-}
-
 .phrase {
-    font-size: 55px;
+    font-size: 35px;
     text-align: left;
     margin-inline-start: 100px;
     margin-bottom: 80px;
@@ -46,11 +34,13 @@
 .ptext {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 32px;
+    font-size: 12px;
+    line-height: 24px; /* Ajuste o espaçamento vertical */
     color: #404040;
-    padding-bottom: 30px;
+    padding-bottom: 15px; /* Ajuste o espaçamento inferior */
     margin-inline-start: 120px;
+    margin-top: -80px; /* Subir a frase */
+    margin-bottom: 10px; /* Diminuir o espaçamento inferior */
 }
 
 .homep-header {
@@ -98,28 +88,64 @@
 }
   
 .bag-button.open {
-    background-color: #f0f0f0; /* Cor de fundo quando a sacola está aberta */
+    background-color: #504141; /* Cor de fundo quando a sacola está aberta */
 }
 
 .homep-image {
-    width: 100%; /* Ou outro valor que faça sentido para o layout */
+    width: 100%; 
     height: auto;
     background-size: cover;
-    background-position: right center;
+    background-position: center;
     background-repeat: no-repeat;
-  }
-  
+}
+
+.home-page {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 80px;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;
+    gap: 15px;
+}
+
+.form-group-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinhar o conteúdo à esquerda */
+    margin-inline-start: 20px;
+    margin-bottom: 30px; /* Ajustar essa margem para espaçamento adequado */
+}
+
+.form-group-text h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.img-homep {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinhar a imagem à esquerda */
+}
+
+.homep-image {
+    margin-top: 130px;
+}
+
+.homep-container {
+    text-align: left; /* Alinha o conteúdo à direita */
+    margin-inline-end: 40px; /* Define a margem na lateral direita */
+    margin-top: 130px;
+}
 /* Media query para largura de até 600px */
 @media (max-width: 600px) {
     .ptext {
         font-weight: 200;
-        font-size: 13px;
+        font-size: 11px;
         line-height: 14px; 
         margin-inline-start: 20px;
     }
 
     .form-group-text {
-        flex-direction: column; 
         align-items: center; /* Centralizar verticalmente */
         text-align: center; /* Centralizar o texto horizontalmente */
         margin-bottom: 0%;
@@ -158,5 +184,8 @@
 
     .signin-button {
         margin-bottom: 5px;
+    }
+    .home-page {
+        flex-direction: column;
     }
 }

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Logo } from '../../components/Logo/Logo';
 import BarraPesquisa from '../../components/BarraPesquisa/BarraPesquisa';
 import { ReactComponent as BagIcon } from './icons/bag.svg';
-import appleIcon from './icons/apple.svg';
-import bananaIcon from './icons/banana.svg';
+import appleIcon from './images/apple.png';
+import bananaIcon from './images/banana.png';
 import Card from '../../components/Card/CardHomePage';
 import axios from 'axios';
 import Footer from '../../components/Footer/Footer';
@@ -127,26 +127,31 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
         </div>
       )}
 
-      <div className="homep-container">
-        <img src={homePageImage} alt="" />
-        <div className="homep-image" style={{ backgroundImage: `url(${homePageImage})` }}></div>
-        <div className="form-group-text">
-          <h1 className="phrase">
-            <span className="tx1">Premium </span>
-            <span className="tx2">quality<br /></span>
-            <span className="tx3">
-              Food for your <img src={bananaIcon} alt="Banana Icon" className="imagem" />
-            </span>{" "}
-            <span className="tx4">healthy<br /></span>
-            <span className="tx5"><img src={appleIcon} alt="Apple Icon" className="imagem" />& Daily Life</span>
-          </h1>
-        </div>
-        <p className='ptext'>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut<br />
-          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco<br />
-          laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
+      <div className='home-page'>
 
+        <div className="homep-container">
+          <div className="form-group-text">
+            <h1 className="phrase">
+              <span className="tx1">Premium </span>
+              <span className="tx2">quality<br /></span>
+              <span className="tx3">
+                Food for your <img src={bananaIcon} alt="Banana Icon" className="imagem" />
+              </span>{" "}
+              <span className="tx4">healthy<br /></span>
+              <span className="tx5"><img src={appleIcon} alt="Apple Icon" className="imagem" />& Daily Life</span>
+            </h1>
+          </div>
+
+          <p className='ptext'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut<br />
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco<br />
+            laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+        </div>
+        
+        <div className='img-homep'>
+            <img src={homePageImage} alt="" className="homep-image" />
+        </div>
       </div>
 
       <div className="homep-cards-container">
