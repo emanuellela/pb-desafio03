@@ -11,7 +11,6 @@ import './HomePageForm.css';
 import homePageImage from './images/home-page.png'; 
 import homePageDetail from './images/detail.png'; 
 import { cardImages } from '../../UI/imagesPath';
-
 import { Link } from 'react-router-dom';
 
 interface CardData {
@@ -195,7 +194,7 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
         </div>
       )}
     </div>
-    {/* ... */}
+    <Footer />
   </div>
 );};
 

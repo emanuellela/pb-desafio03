@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Logo } from '../../components/Logo/Logo';
 import BarraPesquisa from '../../components/BarraPesquisa/BarraPesquisa';
 import { ReactComponent as BagIcon } from '../HomePage/icons/bag.svg';
-import Card from '../../components/Card/CardHomePage';
 import axios from 'axios';
 import Footer from '../../components/Footer/Footer';
 import './DishPageForm.css'; 
@@ -201,7 +200,7 @@ const DishPageForm: React.FC<DishFormProps> = ({ backUrl }) => {
         </div>
       )}
     </div>
-    {/* ... */}
+    <Footer />
   </div>
 );};
 
