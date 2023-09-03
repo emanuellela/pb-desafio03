@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-.card {
+.card2 {
     border: 1px solid #b83535;
     border-radius: 8px;
     padding: 20px;
@@ -9,17 +9,17 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.card-bg {
+.card-bg2 {
     background-color: #F8F8F8; /* Fundo dentro do card */
 }
 
-.card-image {
+.card-image2 {
     width: 100%;
     height: auto;
     border-radius: 8px;
 }
   
-.card-name {
+.card-name2 {
     font-family: 'Poppins', sans-serif;
     color: #202020;
     font-size: 1.2rem;
@@ -41,17 +41,17 @@
     font-size: 14px;
 }
 
-.card-img {
+.card-img2 {
     width: 100%; 
 }
 
 /* Media query para largura de até 600px */
 @media (max-width: 600px) {
-    .card {
+    .card2 {
         width: 150px;
     }
 
-    .card-img {
+    .card-img2 {
         width: 90%; 
         margin-left: 8px;
     }

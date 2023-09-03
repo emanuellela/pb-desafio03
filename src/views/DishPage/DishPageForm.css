@@ -24,7 +24,7 @@
     margin-right: 100px;
 }
 
-.barra-icon {
+.barra-icondp {
     display: flex;
     flex-direction: row;
     gap: 5px;
@@ -50,13 +50,13 @@
     background-color: #333; /* Cor de fundo ao passar o mouse */
 }
 
-.bag-button {
+.bag-button2 {
     cursor: pointer;
     transition: background-color 0.3s ease; /* Transição suave */
     margin-right: 10px;
 }
   
-.bag-button.open {
+.bag-button2.open {
     background-color: #504141; /* Cor de fundo quando a sacola está aberta */
 }
 
@@ -149,28 +149,20 @@
 
 /* Media query para largura de até 600px */
 @media (max-width: 600px) {
-    .homep-cards-grid {
+    .dish-cards-grid {
         display: grid;
         justify-items: left;
         grid-template-columns: 1fr 1fr;
         margin-left: 80px;
     }
 
-    .ptext {
-        font-weight: 200;
-        font-size: 8px;
-        line-height: 14px;
-        margin-inline-start: 40px;
-        margin-top: 40px;
-    }
-
-    .form-group-text {
+    .group-text {
         align-items: center; /* Centralizar verticalmente */
         text-align: center; /* Centralizar o texto horizontalmente */
         margin-bottom: 0%;
     }
 
-    .form-group-text h1 {
+    .group-text h1 {
         font-weight: 200;
         font-size: 54px;
         line-height: 60px; /* Reduzindo o espaço vertical entre as linhas */
@@ -178,24 +170,20 @@
         padding-inline-start: 10px;
     }
 
-    .homep-header {
+    .dish-header {
         gap: 100px;
         margin-right: 0%;
     }
-    
-    .phrase {
-        text-align: center; /* Centralizar o texto horizontalmente */
-    }
 
-    .bag-container {
+    .bag-container2 {
         margin-left: 0px; 
     }
 
-    .barra-icon {
-        margin-inline-start: -20px;
+    .barra-icondp {
+        margin-inline-start: 60px;
     }
 
-    .bag-button {
+    .bag-button2 {
         cursor: pointer;
         margin-top: inherit;
         transition: background-color 0.3s ease; /* Transição suave */
@@ -205,20 +193,12 @@
         margin-bottom: 5px;
     }
 
-    .home-page {
+    .dish-page {
         flex-direction: column;
         margin-top: -90px;
     }
 
     .img-detail {
         display:none;
-    }
-
-    .img-homep {
-        margin-top: -110px;
-    }
-
-    .page-title {
-        margin-left: 40px;
     }
 }

@@ -72,7 +72,7 @@
     align-items: center;
 }
   
-.signin-button {
+.signin-buttonhp {
     font-family: 'Inter', sans-serif;
     background-color: #202020;
     color: #FDFBFA;
@@ -83,11 +83,11 @@
     align-items: revert;
     border-radius: 5px;
     white-space: nowrap;
-    margin-inline-start: -12px;
+    margin-inline-start: -25px;
     text-decoration: none;
 }
   
-.signin-button:hover {
+.signin-buttonhp:hover {
     background-color: #333; /* Cor de fundo ao passar o mouse */
 }
 

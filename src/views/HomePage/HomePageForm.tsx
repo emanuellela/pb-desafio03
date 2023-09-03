@@ -57,9 +57,9 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
     const fetchCards = async () => {
       try {
         const headers = {
-          'X-Parse-Application-Id': 'DSiIkHz2MVbCZutKS7abtgrRVsiLNNGcs0L7VsNL',
-          'X-Parse-Master-Key': '0cpnqkSUKVkIDlQrNxameA6OmjxmrA72tsUMqVG9',
-          'X-Parse-Client-Key': 'zXOqJ2k44R6xQqqlpPuizAr3rs58RhHXfU7Aj20V',
+          'X-Parse-Application-Id': 'e72hRs77YPSbKFKeSK9dcSdcrQ4vvC8BP0wo16QX',
+          'X-Parse-Master-Key': 'n6D5NcxV7AzwD4vm5PKA1Z1zJ6xv8psksrzTdYjv',
+          'X-Parse-Client-Key': '4OOLjFx0JnPySdAPfpPv4zbku4IKrgUTFToCdeSm',
           'X-Parse-Revocable-Session': '1',
           'Content-Type': 'application/json',
         };
@@ -103,7 +103,12 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
     };
 
     fetchCards();
+  
   }, []);
+
+  useEffect(() => {
+    handleSearch();
+  },[cards])
 
   const handleSearch = () => {
     // Filtrar os cards pelo nome
@@ -132,7 +137,7 @@ const HomePageForm: React.FC<HomePageFormProps> = ({ backUrl }) => {
         <div className="bag-button"> {/*onClick={handleBagClick}*/} 
 
         </div>
-        <Link to="/login" className="signin-button">
+        <Link to="/login" className="signin-buttonhp">
           Sign In
         </Link>
       </div>

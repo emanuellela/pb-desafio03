@@ -52,9 +52,9 @@ const DishPageForm: React.FC<DishFormProps> = ({ backUrl }) => {
     const fetchCards = async () => {
       try {
         const headers = {
-          'X-Parse-Application-Id': 'DSiIkHz2MVbCZutKS7abtgrRVsiLNNGcs0L7VsNL',
-          'X-Parse-Master-Key': '0cpnqkSUKVkIDlQrNxameA6OmjxmrA72tsUMqVG9',
-          'X-Parse-Client-Key': 'zXOqJ2k44R6xQqqlpPuizAr3rs58RhHXfU7Aj20V',
+          'X-Parse-Application-Id': 'e72hRs77YPSbKFKeSK9dcSdcrQ4vvC8BP0wo16QX',
+          'X-Parse-Master-Key': 'n6D5NcxV7AzwD4vm5PKA1Z1zJ6xv8psksrzTdYjv',
+          'X-Parse-Client-Key': '4OOLjFx0JnPySdAPfpPv4zbku4IKrgUTFToCdeSm',
           'X-Parse-Revocable-Session': '1',
           'Content-Type': 'application/json',
         };
@@ -66,14 +66,10 @@ const DishPageForm: React.FC<DishFormProps> = ({ backUrl }) => {
                   node {
                     id
                     objectId
-                    createdAt
-                    updatedAt
                     name
                     price
                     image
-                    description
-                    query
-                    variables                
+                    description   
                   }
                 }
               }
@@ -105,23 +101,23 @@ const DishPageForm: React.FC<DishFormProps> = ({ backUrl }) => {
 
   const handleSearch = () => {
     // Filtrar os cards pelo nome
-    const filtered = cards.filter((card) =>
-      card.node.name && card.node.name.toLowerCase().includes(searchTerm)
+    const filtered = cards.filter((card2) =>
+      card2.node.name && card2.node.name.toLowerCase().includes(searchTerm)
     );
     setFilteredCards(filtered);
   };
 
-  const filteredAndSortedCards = filteredCards.filter((card) =>
-    card.node.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+  const filteredAndSortedCards = filteredCards.filter((card2) =>
+    card2.node.name.toLowerCase().startsWith(searchTerm.toLowerCase())
   );
 
   return (
     <div>
       <header className="dish-header">
         <Logo />
-        <div className='barra-icon'>
+        <div className='barra-icondp'>
           <BarraPesquisa value={searchTerm} onChange={(event) => setSearchTerm(event.target.value)} onSearch={handleSearch} />
-          <div className="bag-button"> {/*onClick={handleBagClick}*/} 
+          <div className="bag-button2"> {/*onClick={handleBagClick}*/} 
             {/* Render the bag SVG */}
           <BagIcon />
         </div>
@@ -193,13 +189,13 @@ const DishPageForm: React.FC<DishFormProps> = ({ backUrl }) => {
           <p>Loading...</p>
         ) : (
           <div className="dish-cards-grid">
-          {filteredAndSortedCards.slice(0, 8).map((card) => (
+          {filteredAndSortedCards.slice(0, 8).map((card2) => (
             <CardDish
-              key={card.node.objectId}
-              objectId={card.node.objectId}
-              name={card.node.name}
-              price={card.node.price}
-              description={card.node.description}
+              key={card2.node.objectId}
+              objectId={card2.node.objectId}
+              name={card2.node.name}
+              price={card2.node.price}
+              description={card2.node.description}
               // Seleciona uma imagem aleatória
               image={cardImagesDishes[Math.floor(Math.random() * cardImagesDishes.length)]}
             />
