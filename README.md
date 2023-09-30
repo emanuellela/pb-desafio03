@@ -25,9 +25,9 @@ npm start or yarn start
 - Open your browser and go to http://localhost:3000 to access the site.
 
 ## Technologies:
-  - Mozilla Firefox 116.0.2 (64-bits)
-  - Visual Studio Code 1.81.1
-  - Node.js v18.16.0
+  - Mozilla Firefox 118.0.1;
+  - Visual Studio Code 1.82.2;
+  - Node.js v18.16.0.
 
 <details>
   <summary><b>Front-End</b></summary>
