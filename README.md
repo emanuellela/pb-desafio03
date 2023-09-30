@@ -29,6 +29,8 @@ npm start or yarn start
   - Visual Studio Code 1.82.2;
   - Node.js v18.16.0.
 
+[![Figma](https://img.shields.io/badge/-Figma-F24E1E?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAAAm0lEQVR42mP8/wdAJoVFRoQ/6gHxA6UUZFC6IHHABoAfFJowAxAkSt6gzAgUAoRQ1E3CBh8gADbVnBAqQAQZHI5AeCjggLcE6IwwMIsf7NAAB7u7wCpMxkRiQAAAABJRU5ErkJggg==&logoColor=white)](https://www.figma.com/file/ZietNBdXT7ghq2xksDmipM/FitMe---Online-Food-Delivery-Website?type=design&node-id=1%3A2&mode=design&t=gTNruCrA1ExE3RqY-1)
+
 <details>
   <summary><b>Front-End</b></summary>
     <p>
