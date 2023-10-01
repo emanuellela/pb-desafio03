@@ -1,12 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-
 .dish-cards-container {
     background-color: #FFFFFF;
     margin-left: -75px;
 }
-
 .dish-cards-grid {
     display: grid;
     justify-items: center;
@@ -14,23 +12,20 @@
     margin: 120px;
     margin-top: 40px;
 }
-
 .dish-header {
+    background-color: #FFFFFF;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #ffffff;
     margin-right: 100px;
+    justify-content: space-between;
 }
-
 .barra-icondp {
     display: flex;
     flex-direction: row;
     gap: 5px;
     align-items: center;
 }
-
 .signin-button {
     font-family: 'Inter', sans-serif;
     background-color: #202020;
@@ -45,21 +40,17 @@
     margin-inline-start: -12px;
     text-decoration: none;
 }
-  
 .signin-button:hover {
-    background-color: #333; /* Cor de fundo ao passar o mouse */
+    background-color: #333;
 }
-
 .bag-button2 {
     cursor: pointer;
-    transition: background-color 0.3s ease; /* Transição suave */
+    transition: background-color 0.3s ease; 
     margin-right: 10px;
 }
-  
 .bag-button2.open {
-    background-color: #504141; /* Cor de fundo quando a sacola está aberta */
+    background-color: #504141;
 }
-
 .dishp-image {
     width: 100%; 
     height: auto;
@@ -67,35 +58,30 @@
     background-position: center;
     background-repeat: no-repeat;
 }
-
 .dish-page {
+    background-color: #202020;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 15px;
-    background-color: #202020;
 }  
-
 .group-text {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Alinhar o conteúdo à esquerda */
+    align-items: flex-start; 
     margin-inline-start: 20px;
-    margin-bottom: 30px; /* Ajustar essa margem para espaçamento adequado */
+    margin-bottom: 30px; 
 }
-
 .group-text h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
 }
-
 .dish-container {
-    text-align: left; /* Alinha o conteúdo à direita */
-    margin-inline-end: 40px; /* Define a margem na lateral direita */
+    text-align: left;
+    margin-inline-end: 40px; 
     margin-top: 130px;
 }
-
 .title-lunchbox {
     font-family: 'Poppins', sans-serif;
     color: #202020;
@@ -105,49 +91,40 @@
     font-size: 18px;
     font-weight:400;
 }
-
 .lunch-page {
     display: grid;
-    grid-template-columns: auto 1fr; /* Primeira coluna para a imagem, segunda coluna para o conteúdo */
-    gap: 20px; /* Espaçamento entre as colunas */
-    align-items: center; /* Alinhar verticalmente */
-  }
-  
+    grid-template-columns: auto 1fr; /* 1 coluna imagem, 2 coluna conteúdo */
+    align-items: center; 
+    gap: 20px;
+}
 .column-text {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Distribuir em três colunas */
-    gap: 15px; /* Espaçamento entre as colunas */
-    align-items: center; /* Alinhar verticalmente */
-}
-  
+    grid-template-columns: repeat(3, 1fr); /* distribuir 3 colunas */
+    gap: 15px; 
+    align-items: center; 
+} 
 .vertical-line,
 .vertical-line2 {
     border-right: 1px solid #ccc;
     height: 50px;
     margin: 0;
 }
-
 .recommended {
    color:#FC8019;
    margin-inline-start: 200px;
 }
-
 .middle-page {
     color:#404040
 }
-
 .column-text {
     display: flex;
-    align-items: center; /* Alinhar verticalmente */
+    align-items: center; 
 }
-  
 .vertical-line .vertical-line2 {
-    border-right: 1px solid #ccc; /* Adicionar uma borda à direita para criar a linha vertical */
-    height: 50px; /* Ajuste a altura da linha de acordo com o layout */
-    margin: 0 15px; /* Margens para espaçamento */
+    border-right: 1px solid #ccc;
+    height: 50px; 
+    margin: 0 15px; 
 }
-
-/* Media query para largura de até 600px */
 @media (max-width: 600px) {
     .dish-cards-grid {
         display: grid;
@@ -155,49 +132,40 @@
         grid-template-columns: 1fr 1fr;
         margin-left: 80px;
     }
-
     .group-text {
-        align-items: center; /* Centralizar verticalmente */
-        text-align: center; /* Centralizar o texto horizontalmente */
+        align-items: center;
+        text-align: center;
         margin-bottom: 0%;
     }
-
     .group-text h1 {
         font-weight: 200;
         font-size: 54px;
-        line-height: 60px; /* Reduzindo o espaço vertical entre as linhas */
-        margin: 0; /* Removendo margem padrão dos h1 */
+        line-height: 60px; 
+        margin: 0; 
         padding-inline-start: 10px;
     }
-
     .dish-header {
         gap: 100px;
         margin-right: 0%;
     }
-
     .bag-container2 {
         margin-left: 0px; 
     }
-
     .barra-icondp {
         margin-inline-start: 60px;
     }
-
     .bag-button2 {
         cursor: pointer;
         margin-top: inherit;
-        transition: background-color 0.3s ease; /* Transição suave */
+        transition: background-color 0.3s ease;
     }
-
     .signin-button {
         margin-bottom: 5px;
     }
-
     .dish-page {
         flex-direction: column;
         margin-top: -90px;
     }
-
     .img-detail {
         display:none;
     }
